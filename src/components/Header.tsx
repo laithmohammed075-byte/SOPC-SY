@@ -5,14 +5,15 @@ import { ChevronDown, Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { serviceIds } from "@/content/site";
 import { useLanguage } from "@/lib/i18n";
-import { serviceFromHash, servicePath, useHash } from "@/lib/route";
+import { selectService, serviceFromHash, servicePath, useHash } from "@/lib/route";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { Logo } from "./ui";
 
-type NavChild = { href: string; label: string };
+/** `onSelect` runs before navigating (e.g. Careers pre-selects "Careers" in the contact form). */
+type NavChild = { href: string; label: string; onSelect?: () => void };
 type NavItem = { id: string; href: string; label: string; children?: NavChild[] };
 
-const sectionIds = ["home", "about", "services", "qhse", "why", "contact", "careers"];
+const sectionIds = ["home", "about", "services", "qhse", "why", "contact"];
 
 function useActiveSection(view: string) {
   const [active, setActive] = useState("home");
@@ -86,10 +87,13 @@ function Dropdown({ item, active }: { item: NavItem; active: boolean }) {
           >
             <span aria-hidden className="gold-rule absolute inset-x-6 top-0" />
             {item.children!.map((c) => (
-              <li key={c.href}>
+              <li key={c.label}>
                 <a
                   href={c.href}
-                  onClick={() => setOpen(false)}
+                  onClick={() => {
+                    c.onSelect?.();
+                    setOpen(false);
+                  }}
                   className="flex items-center gap-3 rounded-xl px-4 py-2.5 text-sm text-ink transition-colors hover:bg-mint hover:text-brand"
                 >
                   <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-gold" />
@@ -179,7 +183,8 @@ export function Header() {
       label: t.nav.contact,
       children: [
         { href: "#contact", label: t.nav.sendMessage },
-        { href: "#careers", label: t.nav.careers },
+        // Careers enquiries go through the contact form with "Careers" pre-selected.
+        { href: "#contact", label: t.nav.careers, onSelect: () => selectService("careers") },
       ],
     },
   ];
@@ -187,7 +192,7 @@ export function Header() {
   const isActive = (id: string) =>
     serviceView
       ? id === "services"
-      : active === id || (id === "about" && active === "why") || (id === "contact" && active === "careers");
+      : active === id || (id === "about" && active === "why");
 
   return (
     <header
@@ -286,10 +291,13 @@ export function Header() {
                     {item.children && expanded === item.id && (
                       <ul id={`m-${item.id}`} className="mb-3 space-y-1 rounded-2xl bg-offwhite p-2">
                         {item.children.map((c) => (
-                          <li key={c.href}>
+                          <li key={c.label}>
                             <a
                               href={c.href}
-                              onClick={() => setMobileOpen(false)}
+                              onClick={() => {
+                                c.onSelect?.();
+                                setMobileOpen(false);
+                              }}
                               className="block rounded-xl px-3 py-2.5 text-sm text-ink hover:bg-mint hover:text-brand"
                             >
                               {c.label}

@@ -2,7 +2,7 @@
 
 import { ArrowUp, Mail, MapPin, Phone } from "lucide-react";
 import { company, serviceIds } from "@/content/site";
-import { servicePath } from "@/lib/route";
+import { selectService, servicePath } from "@/lib/route";
 import { useLanguage } from "@/lib/i18n";
 import { Logo } from "./ui";
 
@@ -10,12 +10,12 @@ export function Footer() {
   const { t, lang } = useLanguage();
   const year = new Date().getFullYear();
 
-  const quick = [
+  const quick: { href: string; label: string; onSelect?: () => void }[] = [
     { href: "#home", label: t.nav.home },
     { href: "#about", label: t.nav.about },
     { href: "#services", label: t.nav.services },
     { href: "#qhse", label: t.nav.qhse },
-    { href: "#careers", label: t.nav.careers },
+    { href: "#contact", label: t.nav.careers, onSelect: () => selectService("careers") },
     { href: "#contact", label: t.nav.contact },
   ];
 
@@ -54,8 +54,8 @@ export function Footer() {
           <span aria-hidden className="mt-3 block h-px w-8 bg-gold" />
           <ul className="mt-5 space-y-2.5">
             {quick.map((l) => (
-              <li key={l.href}>
-                <a href={l.href} className="text-sm text-muted transition-colors hover:text-brand">
+              <li key={l.label}>
+                <a href={l.href} onClick={l.onSelect} className="text-sm text-muted transition-colors hover:text-brand">
                   {l.label}
                 </a>
               </li>

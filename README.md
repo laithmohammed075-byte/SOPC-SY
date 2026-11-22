@@ -67,7 +67,6 @@ src/
     ServicesSection.tsx     five circular services, each linking to its own page
     ServicePage.tsx         service detail page, shown at #/services/<id>
     QHSESection.tsx         QHSE with overlapping circular badge
-    CareersSection.tsx      careers block below Contact (pre-selects "Careers" in the form)
     WhyChooseUs.tsx         four advantages
     ContactSection.tsx      validated contact form + contact info placeholders
     Footer.tsx              light footer with gold divider

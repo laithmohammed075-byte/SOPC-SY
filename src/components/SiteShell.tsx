@@ -10,7 +10,6 @@ import { HeroSlider } from "./HeroSlider";
 import { AboutSection } from "./AboutSection";
 import { ServicesSection } from "./ServicesSection";
 import { QHSESection } from "./QHSESection";
-import { CareersSection } from "./CareersSection";
 import { WhyChooseUs } from "./WhyChooseUs";
 import { ContactSection } from "./ContactSection";
 import { Footer } from "./Footer";
@@ -58,7 +57,6 @@ function Page() {
             <QHSESection />
             <WhyChooseUs />
             <ContactSection />
-            <CareersSection />
           </>
         )}
       </main>
