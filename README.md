@@ -100,15 +100,14 @@ Everything visible on the page is in **`src/content/site.ts`**:
 
 ## Contact form integration
 
-The form validates in the browser and POSTs to `/api/contact`. That endpoint validates again and
-returns **501 Not Implemented** until a delivery method is configured. Visitors then see a clear
-message that their message was **not** sent. The form never pretends a message was delivered.
+The form validates in the browser and sends messages through **Web3Forms** to
+`info@sopc-sy.com`. The access key is `company.contact.formAccessKey` in `src/content/site.ts`
+(it is meant to be public; manage it at https://web3forms.com). A hidden honeypot field filters
+simple spam bots. Each email includes the visitor's name, email (set as reply-to), phone, company,
+selected service and the language they used.
 
-To go live:
-
-1. Implement `deliver()` in `src/app/api/contact/route.ts` with your provider (SMTP, Resend, SendGrid, CRM webhook…).
-   Keep credentials in server-side environment variables.
-2. Set `CONTACT_DELIVERY_ENABLED=true` in the deployment environment.
+If `formAccessKey` is set to `null`, the form falls back to `/api/contact`, which answers 501 until a
+server-side delivery method is implemented, and visitors are told their message was **not** sent.
 
 ## Images and licensing
 

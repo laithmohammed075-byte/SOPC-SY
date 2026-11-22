@@ -85,7 +85,14 @@ export function ContactSection() {
       return;
     }
     setStatus("sending");
-    const result = await submitContact(values);
+    const botcheck = Boolean((e.currentTarget.elements.namedItem("botcheck") as HTMLInputElement | null)?.checked);
+    const serviceLabel =
+      values.service === "careers"
+        ? f.careers
+        : values.service === "general"
+          ? f.general
+          : (t.services.items as Record<string, { title: string }>)[values.service]?.title ?? values.service;
+    const result = await submitContact(values, { serviceLabel, language: lang === "ar" ? "Arabic" : "English", botcheck });
     setStatus(result);
     if (result === "success") setValues(empty);
   };
@@ -151,6 +158,8 @@ export function ContactSection() {
 
           <Reveal delay={0.1}>
             <form noValidate onSubmit={onSubmit} className="rounded-3xl border border-line bg-white p-6 shadow-soft sm:p-9" aria-describedby={`${uid}-status`}>
+              {/* Honeypot for spam bots — hidden from people and assistive tech */}
+              <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
               <div className="grid gap-5 sm:grid-cols-2">
                 <Field id={fid("fullName")} label={f.fullName} error={errors.fullName && f.errors.fullName} optionalLabel={f.optional}>
                   <input {...aria("fullName")} type="text" autoComplete="name" required value={values.fullName} onChange={set("fullName")} className={`${inputBase} ${border("fullName")}`} />
