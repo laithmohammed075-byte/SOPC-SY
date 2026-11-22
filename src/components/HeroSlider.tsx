@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useReducedMotionSafe } from "@/lib/useReducedMotionSafe";
-import { ArrowRight, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
+import { ArrowRight, Pause, Play } from "lucide-react";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import { images } from "@/content/site";
@@ -62,10 +62,6 @@ export function HeroSlider() {
       go(-1);
     }
   };
-
-  // Visual "previous" sits on the inline-start side; icons mirror in RTL.
-  const PrevIcon = dir === "rtl" ? ChevronRight : ChevronLeft;
-  const NextIcon = dir === "rtl" ? ChevronLeft : ChevronRight;
 
   return (
     <motion.section
@@ -195,24 +191,6 @@ export function HeroSlider() {
                 {userPaused ? <Play className="h-3.5 w-3.5" /> : <Pause className="h-3.5 w-3.5" />}
               </button>
             )}
-          </div>
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={() => go(-1)}
-              aria-label={t.hero.prev}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/60 bg-white/15 text-white backdrop-blur-md transition-all hover:bg-white hover:text-brand sm:h-12 sm:w-12"
-            >
-              <PrevIcon className="h-5 w-5" />
-            </button>
-            <button
-              type="button"
-              onClick={() => go(1)}
-              aria-label={t.hero.next}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/60 bg-white/15 text-white backdrop-blur-md transition-all hover:bg-white hover:text-brand sm:h-12 sm:w-12"
-            >
-              <NextIcon className="h-5 w-5" />
-            </button>
           </div>
         </div>
       </div>
