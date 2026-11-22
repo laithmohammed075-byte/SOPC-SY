@@ -93,8 +93,8 @@ Everything visible on the page is in **`src/content/site.ts`**:
   `#/services/pumping-stations`, `#/services/import-export`, `#/services/training`.
   Service photos: `public/images/service-<id>.webp` (supplied by SOPC). The circle crop is set per photo
   with `focus` in `images.serviceImages`; the full photo is the faded background of the service page.
-  The **About, Services and QHSE copy is draft text.** Service descriptions are labelled as
-  placeholders until SOPC provides official content.
+  Service names and descriptions are SOPC's official text. The **About, QHSE and "Why SOPC" copy
+  is still draft text** and should be reviewed by SOPC.
 
 ## Contact form integration
 

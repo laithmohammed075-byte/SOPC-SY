@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowLeft, ArrowRight, ChevronRight, Info } from "lucide-react";
+import { ArrowLeft, ArrowRight, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { images, serviceIds, type ServiceId } from "@/content/site";
@@ -105,11 +105,7 @@ export function ServicePage({ id }: { id: ServiceId }) {
       <section className="bg-white pb-20 pt-6 sm:pb-24">
         <div className="mx-auto grid max-w-[1240px] gap-10 px-5 sm:px-8 lg:grid-cols-[1.5fr_1fr] lg:gap-16">
           <Reveal>
-            <p className="text-lg leading-relaxed text-ink/90">{item.body}</p>
-            <p className="mt-6 flex items-start gap-2 rounded-2xl bg-gold-soft/50 p-4 text-sm font-medium text-[#6d5517]">
-              <Info className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
-              {t.services.draftNote}
-            </p>
+            <p className="border-s-2 border-gold ps-5 text-lg leading-loose text-ink/90 sm:text-xl sm:leading-loose">{item.body}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <button
                 type="button"
