@@ -37,22 +37,24 @@ export function ServicePage({ id }: { id: ServiceId }) {
   return (
     <article aria-labelledby="service-title">
       {/* Banner */}
-      <header className="relative isolate overflow-hidden bg-mint pb-28 pt-14 sm:pb-36 sm:pt-20 lg:pb-44 lg:pt-24">
+      <header className="relative isolate overflow-hidden bg-white pb-28 pt-14 sm:pb-36 sm:pt-20 lg:pb-44 lg:pt-24">
+        {/* The service's own photo, large and softly faded behind the text */}
         <div aria-hidden className="absolute inset-0 -z-10">
           {!imgFailed && (
             <Image
-              src={images.services.src}
+              key={id}
+              src={images.serviceImages[id]}
               alt=""
               fill
               priority
               sizes="100vw"
-              quality={70}
-              className="object-cover"
+              quality={75}
+              className="object-cover opacity-45"
               onError={() => setImgFailed(true)}
             />
           )}
-          <div className="absolute inset-0 bg-white/70" />
-          <div className="absolute inset-0 bg-linear-to-r from-white via-white/80 to-white/20 rtl:bg-linear-to-l" />
+          <div className="absolute inset-0 bg-linear-to-r from-white/95 via-white/70 to-white/10 rtl:bg-linear-to-l" />
+          <div className="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-white/80 to-transparent" />
         </div>
 
         <div className="mx-auto max-w-[1240px] px-5 sm:px-8">
