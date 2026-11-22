@@ -194,8 +194,8 @@ export function Header() {
             <Logo size={60} priority />
           </span>
           <span className="hidden flex-col leading-tight xl:flex">
-            <span className="text-[0.7rem] font-bold uppercase tracking-[0.18em] text-brand">SOPC</span>
-            <span className="max-w-40 text-[0.7rem] text-muted">{t.about.subtitle}</span>
+            <span className="text-[1.35rem] font-extrabold uppercase leading-none tracking-[0.14em] text-brand">SOPC</span>
+            <span className="mt-1 max-w-44 text-[0.72rem] leading-snug text-muted">{t.about.subtitle}</span>
           </span>
         </a>
 
