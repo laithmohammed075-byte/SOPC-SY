@@ -10,12 +10,20 @@ import { useLanguage } from "@/lib/i18n";
 import { WaveDivider } from "./WaveDivider";
 
 const AUTOPLAY_MS = 7000;
+const SWIPE_PX = 60;
+
+// Horizontal slide: `custom` is +1 (next) or -1 (previous), already mirrored for RTL.
+const slideVariants = {
+  enter: (d: number) => ({ x: `${d * 100}%` }),
+  center: { x: "0%" },
+  exit: (d: number) => ({ x: `${d * -100}%` }),
+};
 
 export function HeroSlider() {
   const { t, dir } = useLanguage();
   const reduce = useReducedMotionSafe();
   const slides = images.hero;
-  const [index, setIndex] = useState(0);
+  const [[index, step], setSlide] = useState<[number, number]>([0, 1]);
   const [userPaused, setUserPaused] = useState(false);
   const [hovering, setHovering] = useState(false);
   const [failed, setFailed] = useState<Record<number, boolean>>({});
@@ -27,7 +35,15 @@ export function HeroSlider() {
   const onRight = textRight || dir === "rtl"; // physical side of the text block
   const justify = onRight === (dir === "rtl") ? "justify-start" : "justify-end";
 
-  const go = useCallback((delta: number) => setIndex((i) => (i + delta + slides.length) % slides.length), [slides.length]);
+  const go = useCallback(
+    (delta: number) => setSlide(([i]) => [(i + delta + slides.length) % slides.length, delta > 0 ? 1 : -1]),
+    [slides.length],
+  );
+  const goTo = (i: number) => {
+    if (i !== index) setSlide([i, i > index ? 1 : -1]);
+  };
+  // In RTL "next" arrives from the left, so the physical direction is mirrored.
+  const travel = dir === "rtl" ? -step : step;
 
   useEffect(() => {
     if (!playing) return;
@@ -52,35 +68,38 @@ export function HeroSlider() {
   const NextIcon = dir === "rtl" ? ChevronLeft : ChevronRight;
 
   return (
-    <section
+    <motion.section
       id="home"
+      // Swipe anywhere on the hero (touch or mouse) to change slide; vertical scrolling is untouched.
+      onPanEnd={(_, info) => {
+        if (Math.abs(info.offset.x) < SWIPE_PX || Math.abs(info.offset.x) < Math.abs(info.offset.y)) return;
+        const towardStart = dir === "rtl" ? info.offset.x > 0 : info.offset.x < 0;
+        go(towardStart ? 1 : -1);
+      }}
       aria-roledescription="carousel"
       aria-label={t.hero.carousel}
       onKeyDown={onKeyDown}
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
-      className="relative isolate h-[calc(100svh-76px)] min-h-[600px] max-h-[880px] overflow-hidden bg-mint lg:h-[calc(100svh-88px)]"
+      className="relative isolate touch-pan-y select-none h-[calc(100svh-76px)] min-h-[600px] max-h-[880px] overflow-hidden bg-mint lg:h-[calc(100svh-88px)]"
     >
       {/* Slides */}
       <div aria-live={playing ? "off" : "polite"} className="absolute inset-0">
-        <AnimatePresence initial={false}>
+        <AnimatePresence initial={false} custom={travel}>
           <motion.div
             key={index}
+            custom={travel}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.9, ease: [0.65, 0, 0.35, 1] }}
             role="group"
             aria-roledescription="slide"
             aria-label={`${index + 1} / ${slides.length}: ${t.hero.slides[index]}`}
             className="absolute inset-0"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.1, ease: "easeInOut" }}
           >
-            <motion.div
-              className="absolute inset-0"
-              initial={{ scale: 1.08 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: AUTOPLAY_MS / 1000 + 1.5, ease: "linear" }}
-            >
+            <div className="absolute inset-0">
               {failed[index] ? (
                 <div className="h-full w-full bg-linear-to-br from-brand-2 via-brand to-brand-deep" />
               ) : (
@@ -92,10 +111,11 @@ export function HeroSlider() {
                   sizes="100vw"
                   quality={80}
                   className={`object-cover ${textRight ? "object-[28%_50%] md:object-center" : ""}`}
+                  draggable={false}
                   onError={() => setFailed((f) => ({ ...f, [index]: true }))}
                 />
               )}
-            </motion.div>
+            </div>
           </motion.div>
         </AnimatePresence>
       </div>
@@ -155,7 +175,7 @@ export function HeroSlider() {
                 type="button"
                 aria-label={`${t.hero.goTo} ${i + 1}`}
                 aria-current={i === index ? "true" : undefined}
-                onClick={() => setIndex(i)}
+                onClick={() => goTo(i)}
                 className="group flex h-6 items-center"
               >
                 <span
@@ -198,6 +218,6 @@ export function HeroSlider() {
       </div>
 
       <WaveDivider fill="#F5FAF7" />
-    </section>
+    </motion.section>
   );
 }
