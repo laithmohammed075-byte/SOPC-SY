@@ -64,14 +64,18 @@ export const images = {
     { src: `${IMG}hero-refinery-daylight.webp`, unsplashId: "photo-1516937941344-00b4e0337589" },
   ],
   services: { src: `${IMG}services-refinery-piping.webp`, unsplashId: "photo-1513828742140-ccaa28f3eda0" },
-  /** One photo per service circle — cropped from SOPC's own "Our Services" artwork. */
+  /**
+   * One photo per service (supplied by SOPC). The full photo is the faded background
+   * of the service page; `focus` is the CSS object-position that keeps the subject
+   * inside the round crop on the home page circles.
+   */
   serviceImages: {
-    "crude-oil": `${IMG}service-crude-oil.webp`,
-    "well-maintenance": `${IMG}service-well-maintenance.webp`,
-    "pumping-stations": `${IMG}service-pumping-stations.webp`,
-    "import-export": `${IMG}service-import-export.webp`,
-    training: `${IMG}service-training.webp`,
-  } as Record<ServiceId, string>,
+    "crude-oil": { src: `${IMG}service-crude-oil.webp`, focus: "14% 50%" },
+    "well-maintenance": { src: `${IMG}service-well-maintenance.webp`, focus: "18% 50%" },
+    "pumping-stations": { src: `${IMG}service-pumping-stations.webp`, focus: "66% 50%" },
+    "import-export": { src: `${IMG}service-import-export.webp`, focus: "22% 50%" },
+    training: { src: `${IMG}service-training.webp`, focus: "40% 50%" },
+  } as Record<ServiceId, { src: string; focus: string }>,
   qhse: { src: `${IMG}qhse-workers-ppe.webp`, source: "SOPC" },
 };
 

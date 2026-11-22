@@ -61,10 +61,11 @@ export function ServicesSection() {
                       {/* photo */}
                       <span className="absolute inset-0 overflow-hidden rounded-full border-[3px] border-white bg-mint shadow-soft ring-[1.5px] ring-brand/70 transition-all duration-500 group-hover:shadow-lift group-hover:ring-brand">
                         <Image
-                          src={images.serviceImages[id]}
+                          src={images.serviceImages[id].src}
                           alt=""
                           fill
                           sizes="(min-width: 1280px) 192px, (min-width: 640px) 176px, 144px"
+                          style={{ objectPosition: images.serviceImages[id].focus }}
                           className="object-cover transition-transform duration-700 group-hover:scale-[1.08]"
                         />
                       </span>

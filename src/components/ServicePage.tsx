@@ -43,7 +43,7 @@ export function ServicePage({ id }: { id: ServiceId }) {
           {!imgFailed && (
             <Image
               key={id}
-              src={images.serviceImages[id]}
+              src={images.serviceImages[id].src}
               alt=""
               fill
               priority
@@ -85,7 +85,7 @@ export function ServicePage({ id }: { id: ServiceId }) {
           <Reveal className="mt-8 max-w-3xl">
             <span className="relative block h-28 w-28 sm:h-32 sm:w-32">
               <span className="absolute inset-0 overflow-hidden rounded-full border-[3px] border-white shadow-lift ring-[1.5px] ring-brand/70">
-                <Image src={images.serviceImages[id]} alt="" fill sizes="128px" className="object-cover" />
+                <Image src={images.serviceImages[id].src} alt="" fill sizes="128px" style={{ objectPosition: images.serviceImages[id].focus }} className="object-cover" />
               </span>
               <span className="absolute -bottom-1 -end-1 inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-white bg-brand text-white ring-1 ring-gold/70">
                 <Icon className="h-[1.1rem] w-[1.1rem]" aria-hidden />
@@ -142,7 +142,7 @@ export function ServicePage({ id }: { id: ServiceId }) {
                         className="group flex items-center gap-3 rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-ink shadow-sm ring-1 ring-line transition-all hover:-translate-y-0.5 hover:text-brand hover:ring-brand/30"
                       >
                         <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full ring-1 ring-brand/40">
-                          <Image src={images.serviceImages[o]} alt="" fill sizes="40px" className="object-cover" />
+                          <Image src={images.serviceImages[o].src} alt="" fill sizes="40px" style={{ objectPosition: images.serviceImages[o].focus }} className="object-cover" />
                         </span>
                         <span className="flex-1">{t.services.items[o].title}</span>
                         <ArrowRight className="rtl-flip h-4 w-4 text-brand/60 transition-transform group-hover:translate-x-0.5" aria-hidden />

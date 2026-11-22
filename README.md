@@ -91,7 +91,8 @@ Everything visible on the page is in **`src/content/site.ts`**:
 - Service pages: each service's text is in `services.items` (`title`, `short`, `body`) in both
   dictionaries. Page links: `#/services/crude-oil`, `#/services/well-maintenance`,
   `#/services/pumping-stations`, `#/services/import-export`, `#/services/training`.
-  Circle photos: `public/images/service-<id>.webp` (cropped from SOPC's "Our Services" artwork).
+  Service photos: `public/images/service-<id>.webp` (supplied by SOPC). The circle crop is set per photo
+  with `focus` in `images.serviceImages`; the full photo is the faded background of the service page.
   The **About, Services and QHSE copy is draft text.** Service descriptions are labelled as
   placeholders until SOPC provides official content.
 

@@ -35,7 +35,7 @@ html = html.replace('href="/favicon.ico"', 'href="images/sopc-logo.webp"').repla
 # embed every image as a data URI (downsized copies; originals stay untouched)
 from io import BytesIO
 from PIL import Image
-LIMITS = {'sopc-logo-hd': 900, 'sopc-logo': 360, 'hero-': 1800, 'services-': 1600}
+LIMITS = {'sopc-logo-hd': 900, 'sopc-logo': 360, 'hero-': 1800, 'services-': 1600, 'service-': 1400}
 cache = {}
 def data_uri(name):
     if name not in cache:
