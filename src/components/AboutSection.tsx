@@ -2,7 +2,8 @@
 
 import { ArrowRight, Award, Cog, ShieldCheck } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
-import { IndustrialIllustration } from "./IndustrialIllustration";
+import Image from "next/image";
+import { company, images } from "@/content/site";
 import { Eyebrow, Reveal } from "./ui";
 
 const icons = [Cog, ShieldCheck, Award];
@@ -18,13 +19,18 @@ export function AboutSection() {
         <Reveal className="relative order-2 lg:order-none">
           <div className="relative mx-auto max-w-[560px]">
             <div aria-hidden className="absolute -inset-4 rounded-[2.5rem] border border-dashed border-brand/20" />
-            <div className="rounded-[2rem] bg-white p-3 shadow-lift sm:p-4">
-              <IndustrialIllustration label={t.about.illustration} />
-            </div>
-            <div className="glass absolute -bottom-6 end-4 flex items-center gap-3 rounded-2xl px-5 py-3 shadow-soft sm:end-8">
-              <span className="font-display text-2xl text-brand">SOPC</span>
-              <span className="h-8 w-px bg-gold" />
-              <span className="max-w-36 text-xs leading-snug text-muted">{t.about.subtitle}</span>
+            <div className="relative flex aspect-square items-center justify-center overflow-hidden rounded-[2rem] bg-white p-8 shadow-lift sm:aspect-[560/500] sm:p-10">
+              <div aria-hidden className="absolute inset-x-10 bottom-0 h-px bg-linear-to-r from-transparent via-gold to-transparent" />
+              <div aria-hidden className="absolute -start-16 -top-16 h-48 w-48 rounded-full bg-mint" />
+              <div aria-hidden className="absolute -bottom-20 -end-20 h-56 w-56 rounded-full bg-gold-soft/40" />
+              <Image
+                src={images.logoHd}
+                alt={`${company.shortName} — ${company.nameEn}`}
+                width={1254}
+                height={1254}
+                sizes="(min-width: 1024px) 440px, 80vw"
+                className="relative h-auto w-[82%] max-w-[440px]"
+              />
             </div>
           </div>
         </Reveal>

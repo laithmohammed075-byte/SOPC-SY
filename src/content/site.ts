@@ -54,6 +54,8 @@ export type ServiceId = (typeof serviceIds)[number];
  */
 export const images = {
   logo: `${IMG}sopc-logo.webp`,
+  /** Same official logo file, kept separately so the single-file build can embed it at high resolution for the About section. */
+  logoHd: `${IMG}sopc-logo-hd.webp`,
   hero: [
     { src: `${IMG}hero-petrochemical-pipework.webp`, unsplashId: "photo-1513828583688-c52646db42da" },
     // Supplied by SOPC. textSide "right": the engineer stands on the left, so the hero text moves right.
