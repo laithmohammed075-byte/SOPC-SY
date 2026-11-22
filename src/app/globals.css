@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #08784c;
+  --color-brand-2: #159a70;
+  --color-brand-deep: #065c3a;
+  --color-mint: #eaf6ef;
+  --color-gold: #d6ad43;
+  --color-gold-deep: #a9832a;
+  --color-gold-soft: #f5e8bf;
+  --color-offwhite: #f5faf7;
+  --color-ink: #253d35;
+  --color-muted: #64736d;
+  --color-line: #dbe9e1;
+
+  --font-sans: var(--font-manrope), var(--font-cairo), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-playfair), Georgia, serif;
+  --font-arabic: var(--font-cairo), ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-soft: 0 10px 30px -12px rgb(8 60 40 / 0.18);
+  --shadow-lift: 0 24px 50px -20px rgb(8 60 40 / 0.28);
+
+  --animate-spin-slow: spin 24s linear infinite;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Arabic: Cairo everywhere, including display headings. */
+html[lang="ar"] body,
+html[lang="ar"] .font-display {
+  font-family: var(--font-arabic);
+}
+html[lang="ar"] .font-display {
+  font-weight: 700;
+  letter-spacing: 0;
+}
+html[lang="ar"] .tracking-eyebrow {
+  letter-spacing: 0;
+}
+
+.tracking-eyebrow {
+  letter-spacing: 0.22em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+::selection {
+  background: var(--color-gold-soft);
+  color: var(--color-ink);
+}
+
+/* Directional icons flip in RTL. */
+[dir="rtl"] .rtl-flip {
+  transform: scaleX(-1);
+}
+
+.glass {
+  background: rgb(255 255 255 / 0.72);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid rgb(255 255 255 / 0.8);
+}
+
+.gold-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold) 20%, var(--color-gold) 80%, transparent);
+}
