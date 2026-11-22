@@ -27,7 +27,7 @@ export const company = {
      * This key is designed to be public (it only allows sending to that inbox).
      * Manage it at https://web3forms.com. Set to null to disable online sending.
      */
-    formAccessKey: "90b8f9b7-4120-48f3-a044-45aeb2d9aa37" as string | null,
+    formAccessKey: "9a750ba3-fa94-43f1-a631-aa0eed77fbe2" as string | null,
     phone: "+963 941 805 816" as string | null,
     address: {
       en: "Syria – Homs – Hama Road – Al-Faihaa Building – 4th Floor" as string | null,
