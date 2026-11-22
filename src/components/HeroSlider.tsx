@@ -152,7 +152,7 @@ export function HeroSlider() {
               <ArrowRight className="rtl-flip h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </a>
             <a
-              href="#about"
+              href="#contact"
               className="inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/10 px-6 py-3.5 text-sm font-bold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-brand sm:px-7"
             >
               {t.hero.secondary}

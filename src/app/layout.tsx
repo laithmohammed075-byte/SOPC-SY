@@ -12,9 +12,9 @@ const playfair = Playfair_Display({
 });
 const cairo = Cairo({ subsets: ["arabic", "latin"], variable: "--font-cairo", display: "swap" });
 
-const title = "SOPC — Syrian Oil & Petrochemical Company";
+const title = "SOPC — Syrian Oil & Petrochemical Company | Oil Services in Syria";
 const description =
-  "SOPC delivers oil, gas, petrochemical and industrial solutions — equipment, chemicals, trading and services backed by engineering expertise and a commitment to quality.";
+  "SOPC — Syrian Oil & Petrochemical Company: crude oil extraction, oil well maintenance and field operations, pumping station operation and maintenance, import and export of equipment, and training consultancy.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(company.siteUrl),
