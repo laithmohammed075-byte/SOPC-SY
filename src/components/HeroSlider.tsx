@@ -22,6 +22,11 @@ export function HeroSlider() {
 
   const playing = !reduce && !userPaused && !hovering;
 
+  // Some photos keep their subject on the left; their text then sits on the right.
+  const textRight = (slides[index] as { textSide?: string }).textSide === "right";
+  const onRight = textRight || dir === "rtl"; // physical side of the text block
+  const justify = onRight === (dir === "rtl") ? "justify-start" : "justify-end";
+
   const go = useCallback((delta: number) => setIndex((i) => (i + delta + slides.length) % slides.length), [slides.length]);
 
   useEffect(() => {
@@ -86,7 +91,7 @@ export function HeroSlider() {
                   priority={index === 0}
                   sizes="100vw"
                   quality={80}
-                  className="object-cover"
+                  className={`object-cover ${textRight ? "object-[28%_50%] md:object-center" : ""}`}
                   onError={() => setFailed((f) => ({ ...f, [index]: true }))}
                 />
               )}
@@ -98,23 +103,26 @@ export function HeroSlider() {
       {/* Restrained, localized gradient for text legibility only */}
       <div
         aria-hidden
-        className="absolute inset-y-0 start-0 w-full bg-linear-to-r from-[#0d2c21]/70 via-[#0d2c21]/35 to-transparent md:w-[75%] rtl:bg-linear-to-l"
+        className={`absolute inset-y-0 w-full from-[#0d2c21]/70 via-[#0d2c21]/35 to-transparent transition-all duration-700 md:w-[75%] ${onRight ? "right-0 bg-linear-to-l" : "left-0 bg-linear-to-r"}`}
       />
       <div aria-hidden className="absolute inset-x-0 top-0 h-24 bg-linear-to-b from-black/10 to-transparent" />
 
       {/* Content */}
-      <div className="relative z-10 mx-auto flex h-full max-w-[1320px] items-center px-5 pb-24 sm:px-8 lg:pb-32">
+      <div className={`relative z-10 mx-auto flex h-full max-w-[1320px] items-center px-5 pb-24 sm:px-8 lg:pb-32 ${justify}`}>
         <motion.div
+          key={textRight ? "text-right" : "text-default"}
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-[52rem] text-white"
+          className={`text-white ${textRight ? "max-w-[40rem] lg:max-w-[30rem] xl:max-w-[40rem]" : "max-w-[52rem]"}`}
         >
           <p className="tracking-eyebrow inline-flex items-center gap-3 text-xs font-bold uppercase text-gold-soft sm:text-sm">
             <span aria-hidden className="h-px w-10 bg-gold" />
             {t.hero.eyebrow}
           </p>
-          <h1 className="font-display mt-5 text-[2.35rem] leading-[1.08] drop-shadow-[0_2px_18px_rgba(0,0,0,0.25)] sm:text-6xl lg:text-[4.1rem]">
+          <h1
+            className={`font-display mt-5 text-[2.35rem] leading-[1.08] drop-shadow-[0_2px_18px_rgba(0,0,0,0.25)] sm:text-6xl ${textRight ? "lg:text-[3.4rem]" : "lg:text-[4.1rem]"}`}
+          >
             <span className="block">{t.hero.titleA}</span>
             <span className="block text-gold-soft">{t.hero.titleB}</span>
           </h1>

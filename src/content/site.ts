@@ -56,7 +56,8 @@ export const images = {
   logo: `${IMG}sopc-logo.webp`,
   hero: [
     { src: `${IMG}hero-petrochemical-pipework.webp`, unsplashId: "photo-1513828583688-c52646db42da" },
-    { src: `${IMG}hero-technicians-site.webp`, unsplashId: "photo-1504307651254-35680f356dfd" },
+    // Supplied by SOPC. textSide "right": the engineer stands on the left, so the hero text moves right.
+    { src: `${IMG}hero-technicians-site.webp`, source: "SOPC", textSide: "right" },
     { src: `${IMG}hero-engineering-facility.webp`, unsplashId: "photo-1610891015188-5369212db097" },
     { src: `${IMG}hero-refinery-daylight.webp`, unsplashId: "photo-1516937941344-00b4e0337589" },
   ],
@@ -107,7 +108,7 @@ const en = {
     carousel: "Featured imagery",
     slides: [
       "Stainless-steel petrochemical pipework and pumping equipment",
-      "Technician in protective equipment on an industrial site",
+      "SOPC engineer in uniform and hard hat reviewing a tablet in front of oil pumpjacks",
       "Modern engineering and processing facility interior",
       "Oil refinery processing units in daylight",
     ],
@@ -315,7 +316,7 @@ const ar: Dict = {
     carousel: "صور مميزة",
     slides: [
       "أنابيب ومعدات ضخ بتروكيماوية من الفولاذ المقاوم للصدأ",
-      "فنّي يرتدي معدات الوقاية في موقع صناعي",
+      "مهندس من SOPC بلباس الشركة وخوذة يراجع جهازاً لوحياً أمام مضخات النفط",
       "منشأة هندسية ومعالجة حديثة من الداخل",
       "وحدات تكرير ومعالجة نفطية في وضح النهار",
     ],
