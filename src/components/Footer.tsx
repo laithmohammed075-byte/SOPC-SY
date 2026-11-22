@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUp, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowUp, Clock, Mail, MapPin, Phone } from "lucide-react";
 import { company, serviceIds } from "@/content/site";
 import { selectService, servicePath } from "@/lib/route";
 import { useLanguage } from "@/lib/i18n";
@@ -20,9 +20,10 @@ export function Footer() {
   ];
 
   const contacts = [
-    { icon: Mail, value: company.contact.email, label: t.contact.email },
-    { icon: Phone, value: company.contact.phone, label: t.contact.phone },
+    { icon: Mail, value: company.contact.email, label: t.contact.email, href: company.contact.email ? `mailto:${company.contact.email}` : undefined },
+    { icon: Phone, value: company.contact.phone, label: t.contact.phone, href: company.contact.phone ? `tel:${company.contact.phone.replace(/\s/g, "")}` : undefined },
     { icon: MapPin, value: company.contact.address[lang], label: t.contact.address },
+    { icon: Clock, value: company.contact.hours[lang], label: t.contact.hours },
   ];
 
   return (
@@ -83,12 +84,22 @@ export function Footer() {
           <h2 className="text-sm font-bold uppercase tracking-[0.14em] text-brand">{t.footer.contact}</h2>
           <span aria-hidden className="mt-3 block h-px w-8 bg-gold" />
           <ul className="mt-5 space-y-4">
-            {contacts.map(({ icon: Icon, value, label }) => (
+            {contacts.map(({ icon: Icon, value, label, href }) => (
               <li key={label} className="flex items-start gap-3 text-sm">
                 <Icon className="mt-0.5 h-4 w-4 shrink-0 text-brand" aria-hidden />
                 <span>
                   <span className="sr-only">{label}: </span>
-                  {value ? <span className="text-ink">{value}</span> : <span className="italic text-muted">{t.meta.tbc}</span>}
+                  {value ? (
+                    href ? (
+                      <a href={href} dir="ltr" className="text-ink transition-colors hover:text-brand">
+                        {value}
+                      </a>
+                    ) : (
+                      <span className="whitespace-pre-line text-ink">{value}</span>
+                    )
+                  ) : (
+                    <span className="italic text-muted">{t.meta.tbc}</span>
+                  )}
                 </span>
               </li>
             ))}

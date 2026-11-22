@@ -127,11 +127,11 @@ export function ContactSection() {
                       <p className="text-xs font-bold uppercase tracking-wider text-muted">{label}</p>
                       {value ? (
                         href ? (
-                          <a href={href} className="mt-0.5 block font-semibold text-ink hover:text-brand" dir="ltr">
+                          <a href={href} className="mt-0.5 block font-semibold text-ink hover:text-brand rtl:text-right" dir="ltr">
                             {value}
                           </a>
                         ) : (
-                          <p className="mt-0.5 font-semibold text-ink">{value}</p>
+                          <p className="mt-0.5 whitespace-pre-line font-semibold leading-relaxed text-ink">{value}</p>
                         )
                       ) : (
                         <p className="mt-0.5 italic text-muted">{t.meta.tbc}</p>
@@ -140,10 +140,12 @@ export function ContactSection() {
                   </li>
                 ))}
               </ul>
-              <p className="mt-8 flex items-start gap-2 rounded-2xl bg-white/70 p-4 text-sm text-muted">
-                <Info className="mt-0.5 h-4 w-4 shrink-0 text-gold-deep" aria-hidden />
-                {t.contact.infoNote}
-              </p>
+              {info.some((i) => !i.value) && (
+                <p className="mt-8 flex items-start gap-2 rounded-2xl bg-white/70 p-4 text-sm text-muted">
+                  <Info className="mt-0.5 h-4 w-4 shrink-0 text-gold-deep" aria-hidden />
+                  {t.contact.infoNote}
+                </p>
+              )}
             </aside>
           </Reveal>
 

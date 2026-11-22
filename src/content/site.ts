@@ -21,10 +21,16 @@ export const company = {
   nameAr: "الشركة السورية للخدمات النفطية والكيميائية",
   /** Official contact information — fill in when confirmed. */
   contact: {
-    email: null as string | null,
-    phone: null as string | null,
-    address: { en: null as string | null, ar: null as string | null },
-    hours: { en: null as string | null, ar: null as string | null },
+    email: "Info@sopc-sy.com" as string | null,
+    phone: "+963 941 805 816" as string | null,
+    address: {
+      en: "Syria – Homs – Hama Road – Al-Faihaa Building – 2nd Floor" as string | null,
+      ar: "سوريا – حمص – طريق حماة – بناء الفيحاء – الطابق الثاني" as string | null,
+    },
+    hours: {
+      en: "Sunday – Thursday: 8:00 AM – 4:00 PM\nClosed: Friday & Saturday" as string | null,
+      ar: "الأحد – الخميس: من الساعة 8:00 صباحاً حتى 4:00 مساءً\nالعطلة الأسبوعية: الجمعة والسبت" as string | null,
+    },
   },
   /**
    * Official social profiles. Only add entries with verified URLs —

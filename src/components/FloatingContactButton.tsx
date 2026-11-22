@@ -1,7 +1,8 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, MessageCircle, X } from "lucide-react";
+import { ArrowRight, Mail, MessageCircle, Phone, X } from "lucide-react";
+import { company } from "@/content/site";
 import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "@/lib/i18n";
 import { scrollToId } from "./ui";
@@ -42,6 +43,34 @@ export function FloatingContactButton() {
             <span aria-hidden className="gold-rule mb-4 block" />
             <p className="font-display text-xl text-ink">{t.floating.title}</p>
             <p className="mt-2 text-sm leading-relaxed text-muted">{t.floating.text}</p>
+            {(company.contact.phone || company.contact.email) && (
+              <ul className="mt-4 space-y-2 text-sm">
+                {company.contact.phone && (
+                  <li>
+                    <a
+                      href={`tel:${company.contact.phone.replace(/\s/g, "")}`}
+                      className="flex items-center gap-3 rounded-xl bg-white/80 px-3 py-2.5 font-semibold text-ink ring-1 ring-line transition-colors hover:text-brand"
+                    >
+                      <Phone className="h-4 w-4 text-brand" aria-hidden />
+                      <span className="sr-only">{t.contact.phone}: </span>
+                      <span dir="ltr">{company.contact.phone}</span>
+                    </a>
+                  </li>
+                )}
+                {company.contact.email && (
+                  <li>
+                    <a
+                      href={`mailto:${company.contact.email}`}
+                      className="flex items-center gap-3 rounded-xl bg-white/80 px-3 py-2.5 font-semibold text-ink ring-1 ring-line transition-colors hover:text-brand"
+                    >
+                      <Mail className="h-4 w-4 text-brand" aria-hidden />
+                      <span className="sr-only">{t.contact.email}: </span>
+                      <span dir="ltr">{company.contact.email}</span>
+                    </a>
+                  </li>
+                )}
+              </ul>
+            )}
             <button
               type="button"
               onClick={() => {
