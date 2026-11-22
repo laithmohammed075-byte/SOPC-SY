@@ -24,8 +24,8 @@ export const company = {
     email: "Info@sopc-sy.com" as string | null,
     phone: "+963 941 805 816" as string | null,
     address: {
-      en: "Syria – Homs – Hama Road – Al-Faihaa Building – 2nd Floor" as string | null,
-      ar: "سوريا – حمص – طريق حماة – بناء الفيحاء – الطابق الثاني" as string | null,
+      en: "Syria – Homs – Hama Road – Al-Faihaa Building – 4th Floor" as string | null,
+      ar: "سوريا – حمص – طريق حماة – بناء الفيحاء – الطابق الرابع" as string | null,
     },
     hours: {
       en: "Sunday – Thursday: 8:00 AM – 4:00 PM\nClosed: Friday & Saturday" as string | null,
