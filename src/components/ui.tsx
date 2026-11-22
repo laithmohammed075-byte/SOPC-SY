@@ -67,16 +67,19 @@ export function SectionHeading({
 }
 
 export function Logo({ size = 72, priority = false }: { size?: number; priority?: boolean }) {
+  // The logo has black elements, so in dark mode it always sits on a small white tile.
   return (
-    <Image
-      src={images.logo}
-      alt={`${company.shortName} — ${company.nameEn}`}
-      width={size}
-      height={size}
-      priority={priority}
-      className="h-auto select-none"
-      style={{ width: size, height: size }}
-    />
+    <span className="inline-flex rounded-xl dark:bg-white dark:p-1">
+      <Image
+        src={images.logo}
+        alt={`${company.shortName} — ${company.nameEn}`}
+        width={size}
+        height={size}
+        priority={priority}
+        className="h-auto select-none"
+        style={{ width: size, height: size }}
+      />
+    </span>
   );
 }
 

@@ -132,6 +132,13 @@ build environment. To add one, download a bright daytime pumpjack photo from Uns
 
 `sopc-logo.webp` is the official SOPC logo, used unmodified. It is only ever placed on white or light backgrounds.
 
+## Dark mode
+
+A sun/moon button in the header switches between the default light theme and a dark theme; the
+choice is saved in the visitor's browser (`localStorage` key `sopc-theme`). Colours are theme tokens in
+`src/app/globals.css` (`--color-surface`, `--color-ink`, …) redefined under `.dark`. The logo always
+sits on a white tile, because it contains black elements.
+
 ## Accessibility and performance
 
 - Semantic landmarks, one `h1`, ordered headings, skip link, visible gold focus rings

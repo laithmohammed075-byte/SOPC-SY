@@ -40,7 +40,20 @@ export const viewport: Viewport = { themeColor: "#ffffff", width: "device-width"
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" dir="ltr" className={`${manrope.variable} ${playfair.variable} ${cairo.variable}`}>
+    <html
+      lang="en"
+      dir="ltr"
+      className={`${manrope.variable} ${playfair.variable} ${cairo.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        {/* Apply a saved dark-mode choice before first paint (no light flash). */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(localStorage.getItem("sopc-theme")==="dark")document.documentElement.classList.add("dark")}catch(e){}`,
+          }}
+        />
+      </head>
       <body className="antialiased">{children}</body>
     </html>
   );

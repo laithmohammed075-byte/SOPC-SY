@@ -37,7 +37,7 @@ export function ServicePage({ id }: { id: ServiceId }) {
   return (
     <article aria-labelledby="service-title">
       {/* Banner */}
-      <header className="relative isolate overflow-hidden bg-white pb-28 pt-14 sm:pb-36 sm:pt-20 lg:pb-44 lg:pt-24">
+      <header className="relative isolate overflow-hidden bg-surface pb-28 pt-14 sm:pb-36 sm:pt-20 lg:pb-44 lg:pt-24">
         {/* The service's own photo, large and softly faded behind the text */}
         <div aria-hidden className="absolute inset-0 -z-10">
           {!imgFailed && (
@@ -53,8 +53,8 @@ export function ServicePage({ id }: { id: ServiceId }) {
               onError={() => setImgFailed(true)}
             />
           )}
-          <div className="absolute inset-0 bg-linear-to-r from-white/95 via-white/70 to-white/10 rtl:bg-linear-to-l" />
-          <div className="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-white/80 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-r from-surface/95 via-surface/70 to-surface/10 rtl:bg-linear-to-l" />
+          <div className="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-surface/80 to-transparent" />
         </div>
 
         <div className="mx-auto max-w-[1240px] px-5 sm:px-8">
@@ -84,7 +84,7 @@ export function ServicePage({ id }: { id: ServiceId }) {
 
           <Reveal className="mt-8 max-w-3xl">
             <span className="relative block h-28 w-28 sm:h-32 sm:w-32">
-              <span className="absolute inset-0 overflow-hidden rounded-full border-[3px] border-white shadow-lift ring-[1.5px] ring-brand/70">
+              <span className="absolute inset-0 overflow-hidden rounded-full border-[3px] border-surface shadow-lift ring-[1.5px] ring-brand/70">
                 <Image src={images.serviceImages[id].src} alt="" fill sizes="128px" style={{ objectPosition: images.serviceImages[id].focus }} className="object-cover" />
               </span>
               <span className="absolute -bottom-1 -end-1 inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-white bg-brand text-white ring-1 ring-gold/70">
@@ -98,11 +98,11 @@ export function ServicePage({ id }: { id: ServiceId }) {
             <p className="mt-5 text-lg font-semibold text-brand sm:text-xl">{item.short}</p>
           </Reveal>
         </div>
-        <WaveDivider fill="#FFFFFF" />
+        <WaveDivider fill="var(--color-surface)" />
       </header>
 
       {/* Body */}
-      <section className="bg-white pb-20 pt-6 sm:pb-24">
+      <section className="bg-surface pb-20 pt-6 sm:pb-24">
         <div className="mx-auto grid max-w-[1240px] gap-10 px-5 sm:px-8 lg:grid-cols-[1.5fr_1fr] lg:gap-16">
           <Reveal>
             <p className="border-s-2 border-gold ps-5 text-lg leading-loose text-ink/90 sm:text-xl sm:leading-loose">{item.body}</p>
@@ -135,7 +135,7 @@ export function ServicePage({ id }: { id: ServiceId }) {
                     <li key={o}>
                       <a
                         href={servicePath(o)}
-                        className="group flex items-center gap-3 rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-ink shadow-sm ring-1 ring-line transition-all hover:-translate-y-0.5 hover:text-brand hover:ring-brand/30"
+                        className="group flex items-center gap-3 rounded-2xl bg-surface px-4 py-3 text-sm font-semibold text-ink shadow-sm ring-1 ring-line transition-all hover:-translate-y-0.5 hover:text-brand hover:ring-brand/30"
                       >
                         <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full ring-1 ring-brand/40">
                           <Image src={images.serviceImages[o].src} alt="" fill sizes="40px" style={{ objectPosition: images.serviceImages[o].focus }} className="object-cover" />

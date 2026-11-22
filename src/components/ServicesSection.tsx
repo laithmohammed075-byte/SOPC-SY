@@ -35,9 +35,9 @@ export function ServicesSection() {
             onError={() => setImgFailed(true)}
           />
         )}
-        <div className="absolute inset-0 bg-white/55" />
-        <div className="absolute inset-0 bg-linear-to-b from-offwhite via-transparent via-30% to-white" />
-        <div className="absolute inset-x-0 top-0 h-[55%] bg-[radial-gradient(ellipse_60%_70%_at_50%_45%,rgba(255,255,255,0.9),transparent_75%)]" />
+        <div className="absolute inset-0 bg-surface/55 dark:bg-surface/80" />
+        <div className="absolute inset-0 bg-linear-to-b from-offwhite via-transparent via-30% to-surface" />
+        <div className="absolute inset-x-0 top-0 h-[55%] bg-[radial-gradient(ellipse_60%_70%_at_50%_45%,rgba(255,255,255,0.9),transparent_75%)] dark:bg-[radial-gradient(ellipse_60%_70%_at_50%_45%,rgba(13,22,19,0.9),transparent_75%)]" />
       </div>
 
       <div className="mx-auto max-w-[1280px] px-5 sm:px-8">
@@ -59,7 +59,7 @@ export function ServicesSection() {
                         className="absolute -inset-2.5 rounded-full border border-dashed border-brand/40 transition-all duration-700 group-hover:rotate-45 group-hover:border-gold sm:-inset-3"
                       />
                       {/* photo */}
-                      <span className="absolute inset-0 overflow-hidden rounded-full border-[3px] border-white bg-mint shadow-soft ring-[1.5px] ring-brand/70 transition-all duration-500 group-hover:shadow-lift group-hover:ring-brand">
+                      <span className="absolute inset-0 overflow-hidden rounded-full border-[3px] border-surface bg-mint shadow-soft ring-[1.5px] ring-brand/70 transition-all duration-500 group-hover:shadow-lift group-hover:ring-brand">
                         <Image
                           src={images.serviceImages[id].src}
                           alt=""

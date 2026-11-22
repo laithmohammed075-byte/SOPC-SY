@@ -112,6 +112,8 @@ const en = {
     close: "Close menu",
     primary: "Primary navigation",
     language: "Language",
+    darkMode: "Dark mode",
+    lightMode: "Light mode",
   },
   hero: {
     eyebrow: "SOPC — Syria",
@@ -280,6 +282,8 @@ const ar: Dict = {
     close: "إغلاق القائمة",
     primary: "التنقل الرئيسي",
     language: "اللغة",
+    darkMode: "الوضع الليلي",
+    lightMode: "الوضع النهاري",
   },
   hero: {
     eyebrow: "SOPC — سوريا",

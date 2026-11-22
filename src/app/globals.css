@@ -1,6 +1,10 @@
 @import "tailwindcss";
 
+/* Dark mode is opt-in via the header toggle: <html class="dark"> */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
+  --color-surface: #ffffff;
   --color-brand: #08784c;
   --color-brand-2: #159a70;
   --color-brand-deep: #065c3a;
@@ -27,6 +31,21 @@
   color-scheme: light;
 }
 
+/* Dark theme: same brand, deep green-black surfaces, light text. */
+.dark {
+  color-scheme: dark;
+  --color-surface: #0d1613;
+  --color-offwhite: #111d19;
+  --color-mint: #15261f;
+  --color-ink: #e4eee9;
+  --color-muted: #9fb3aa;
+  --color-line: #24372f;
+  --color-brand: #12935f;
+  --color-brand-2: #1ba872;
+  --shadow-soft: 0 10px 30px -12px rgb(0 0 0 / 0.55);
+  --shadow-lift: 0 24px 50px -20px rgb(0 0 0 / 0.7);
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 88px;
@@ -47,7 +66,7 @@ html {
 }
 
 body {
-  background: #ffffff;
+  background: var(--color-surface);
   color: var(--color-ink);
   font-family: var(--font-sans);
   overflow-x: clip;
@@ -85,6 +104,11 @@ html[lang="ar"] .tracking-eyebrow {
 /* Directional icons flip in RTL. */
 [dir="rtl"] .rtl-flip {
   transform: scaleX(-1);
+}
+
+.dark .glass {
+  background: rgb(17 29 25 / 0.78);
+  border-color: rgb(255 255 255 / 0.06);
 }
 
 .glass {

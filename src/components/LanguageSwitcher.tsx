@@ -14,7 +14,7 @@ export function LanguageSwitcher({ className = "" }: { className?: string }) {
     <div
       role="group"
       aria-label={t.nav.language}
-      className={`relative inline-flex items-center rounded-full border border-line bg-white/70 p-1 text-xs font-bold ${className}`}
+      className={`relative inline-flex items-center rounded-full border border-line bg-surface/70 p-1 text-xs font-bold ${className}`}
     >
       {options.map((o) => {
         const active = o.value === lang;

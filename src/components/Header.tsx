@@ -7,6 +7,7 @@ import { serviceIds } from "@/content/site";
 import { useLanguage } from "@/lib/i18n";
 import { selectService, serviceFromHash, servicePath, useHash } from "@/lib/route";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { ThemeToggle } from "./ThemeToggle";
 import { Logo } from "./ui";
 
 /** `onSelect` runs before navigating (e.g. Careers pre-selects "Careers" in the contact form). */
@@ -83,7 +84,7 @@ function Dropdown({ item, active }: { item: NavItem; active: boolean }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 6 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="absolute start-0 top-full z-50 mt-2 min-w-64 overflow-hidden rounded-2xl border border-line bg-white/95 p-2 shadow-lift backdrop-blur-xl"
+            className="absolute start-0 top-full z-50 mt-2 min-w-64 overflow-hidden rounded-2xl border border-line bg-surface/95 p-2 shadow-lift backdrop-blur-xl"
           >
             <span aria-hidden className="gold-rule absolute inset-x-6 top-0" />
             {item.children!.map((c) => (
@@ -198,8 +199,8 @@ export function Header() {
     <header
       className={`sticky top-0 z-50 border-b transition-all duration-500 ${
         scrolled
-          ? "border-line/80 bg-white/85 shadow-[0_8px_30px_-18px_rgba(8,60,40,0.35)] backdrop-blur-xl"
-          : "border-line/50 bg-white/95 backdrop-blur-md"
+          ? "border-line/80 bg-surface/85 shadow-[0_8px_30px_-18px_rgba(8,60,40,0.35)] backdrop-blur-xl"
+          : "border-line/50 bg-surface/95 backdrop-blur-md"
       }`}
     >
       <div className="mx-auto flex h-[76px] max-w-[1320px] items-center justify-between gap-4 px-4 sm:px-6 lg:h-[88px] lg:px-8">
@@ -231,6 +232,7 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
+          <ThemeToggle />
           <LanguageSwitcher className="hidden sm:inline-flex" />
           <a
             href="#contact"
@@ -259,7 +261,7 @@ export function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden border-t border-line bg-white lg:hidden"
+            className="overflow-hidden border-t border-line bg-surface lg:hidden"
           >
             <nav aria-label={t.nav.primary} className="max-h-[calc(100dvh-76px)] overflow-y-auto px-4 pb-8 pt-3 sm:px-6">
               <ul className="divide-y divide-line/70">

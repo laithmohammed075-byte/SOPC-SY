@@ -13,7 +13,7 @@ export function AboutSection() {
   return (
     <section id="about" aria-labelledby="about-title" className="relative overflow-hidden bg-offwhite pb-20 pt-10 sm:pb-24 sm:pt-12 lg:pb-28 lg:pt-14">
       <div aria-hidden className="absolute -end-40 top-10 h-96 w-96 rounded-full bg-mint blur-3xl" />
-      <div aria-hidden className="absolute -start-32 bottom-0 h-72 w-72 rounded-full bg-gold-soft/40 blur-3xl" />
+      <div aria-hidden className="absolute -start-32 bottom-0 h-72 w-72 rounded-full bg-gold-soft/40 blur-3xl dark:opacity-10" />
 
       <div className="relative mx-auto grid max-w-[1240px] items-center gap-14 px-5 sm:px-8 lg:grid-cols-[1fr_1.05fr] lg:gap-20">
         <Reveal className="relative order-2 lg:order-none">
@@ -21,7 +21,7 @@ export function AboutSection() {
             <div aria-hidden className="absolute -inset-4 rounded-[2.5rem] border border-dashed border-brand/20" />
             <div className="relative flex aspect-square items-center justify-center overflow-hidden rounded-[2rem] bg-white p-8 shadow-lift sm:aspect-[560/500] sm:p-10">
               <div aria-hidden className="absolute inset-x-10 bottom-0 h-px bg-linear-to-r from-transparent via-gold to-transparent" />
-              <div aria-hidden className="absolute -start-16 -top-16 h-48 w-48 rounded-full bg-mint" />
+              <div aria-hidden className="absolute -start-16 -top-16 h-48 w-48 rounded-full bg-[#EAF6EF]" />
               <div aria-hidden className="absolute -bottom-20 -end-20 h-56 w-56 rounded-full bg-gold-soft/40" />
               <Image
                 src={images.logoHd}
@@ -55,7 +55,7 @@ export function AboutSection() {
               return (
                 <li key={f.title}>
                 <Reveal delay={0.08 * i} className="h-full">
-                  <div className="group h-full rounded-2xl border border-line bg-white/80 p-5 shadow-soft backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-lift">
+                  <div className="group h-full rounded-2xl border border-line bg-surface/80 p-5 shadow-soft backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-lift">
                     <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-mint text-brand ring-1 ring-gold/40 transition-colors group-hover:bg-brand group-hover:text-white">
                       <Icon className="h-5 w-5" aria-hidden />
                     </span>

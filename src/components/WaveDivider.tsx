@@ -2,7 +2,7 @@
  * Organic wave that closes the hero and flows into the next light section.
  * A thin emerald line (and a fainter gold echo) traces the wave's crest.
  */
-export function WaveDivider({ fill = "#F5FAF7", className = "" }: { fill?: string; className?: string }) {
+export function WaveDivider({ fill = "var(--color-offwhite)", className = "" }: { fill?: string; className?: string }) {
   return (
     <div aria-hidden className={`pointer-events-none absolute inset-x-0 bottom-0 z-20 ${className}`}>
       <svg
@@ -26,12 +26,12 @@ export function WaveDivider({ fill = "#F5FAF7", className = "" }: { fill?: strin
         {/* soft translucent under-wave for depth */}
         <path
           d="M0,92 C220,40 420,30 640,70 C860,110 1060,128 1250,96 C1340,80 1400,62 1440,52 L1440,160 L0,160 Z"
-          fill="#FFFFFF"
+          style={{ fill: "var(--color-surface)" }}
           fillOpacity="0.35"
         />
         <path
           d="M0,118 C240,62 460,58 690,92 C910,124 1100,138 1280,108 C1360,94 1410,80 1440,72 L1440,160 L0,160 Z"
-          fill={fill}
+          style={{ fill }}
         />
         <path
           d="M0,118 C240,62 460,58 690,92 C910,124 1100,138 1280,108 C1360,94 1410,80 1440,72"

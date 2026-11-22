@@ -14,10 +14,10 @@ export function QHSESection() {
   const [failed, setFailed] = useState(false);
 
   return (
-    <section id="qhse" aria-labelledby="qhse-title" className="relative bg-linear-to-b from-mint/70 via-offwhite to-white pb-20 pt-28 sm:pb-24 lg:pb-28 lg:pt-32">
+    <section id="qhse" aria-labelledby="qhse-title" className="relative bg-linear-to-b from-mint/70 via-offwhite to-surface pb-20 pt-28 sm:pb-24 lg:pb-28 lg:pt-32">
       {/* curved top edge */}
       <svg aria-hidden viewBox="0 0 1440 60" preserveAspectRatio="none" className="absolute inset-x-0 top-0 h-10 w-full sm:h-14">
-        <path d="M0,0 H1440 V18 C1080,58 360,58 0,18 Z" fill="#FFFFFF" />
+        <path d="M0,0 H1440 V18 C1080,58 360,58 0,18 Z" style={{ fill: "var(--color-surface)" }} />
         <path d="M0,18 C360,58 1080,58 1440,18" fill="none" stroke="#D6AD43" strokeOpacity="0.6" strokeWidth="1.25" vectorEffect="non-scaling-stroke" />
       </svg>
 
@@ -43,7 +43,7 @@ export function QHSESection() {
           <div className="relative">
             <div aria-hidden className="absolute -bottom-5 -start-5 h-2/3 w-2/3 rounded-[2rem] bg-mint" />
             <div aria-hidden className="absolute -end-4 -top-4 h-24 w-24 rounded-full border-2 border-dashed border-gold/50" />
-            <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] shadow-lift ring-1 ring-white">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] shadow-lift ring-1 ring-surface">
               {failed ? (
                 <div className="h-full w-full bg-linear-to-br from-mint to-gold-soft" aria-hidden />
               ) : (
@@ -84,7 +84,7 @@ export function QHSESection() {
               return (
                 <li key={f.title}>
                   <Reveal delay={0.08 * i} className="h-full">
-                    <div className="group h-full rounded-2xl border border-line bg-white p-5 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-brand/30">
+                    <div className="group h-full rounded-2xl border border-line bg-surface p-5 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-brand/30">
                       <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-mint text-brand ring-1 ring-gold/50 transition-colors group-hover:bg-brand group-hover:text-white">
                         <Icon className="h-5 w-5" aria-hidden />
                       </span>

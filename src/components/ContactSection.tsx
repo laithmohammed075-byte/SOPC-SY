@@ -49,7 +49,7 @@ function Field({
 }
 
 const inputBase =
-  "w-full rounded-xl border bg-white px-4 py-3 text-[0.95rem] text-ink placeholder:text-muted/60 transition-all duration-200 focus:border-brand focus:outline-none focus:ring-4 focus:ring-brand/10";
+  "w-full rounded-xl border bg-surface px-4 py-3 text-[0.95rem] text-ink placeholder:text-muted/60 transition-all duration-200 focus:border-brand focus:outline-none focus:ring-4 focus:ring-brand/10";
 
 export function ContactSection() {
   const { t, lang } = useLanguage();
@@ -114,7 +114,7 @@ export function ContactSection() {
   ];
 
   return (
-    <section id="contact" aria-labelledby="contact-title" className="relative overflow-hidden bg-white py-20 sm:py-24 lg:py-28">
+    <section id="contact" aria-labelledby="contact-title" className="relative overflow-hidden bg-surface py-20 sm:py-24 lg:py-28">
       <div aria-hidden className="absolute inset-x-0 top-0 h-64 bg-linear-to-b from-mint/60 to-transparent" />
       <div className="relative mx-auto max-w-[1240px] px-5 sm:px-8">
         <SectionHeading id="contact-title" eyebrow={t.contact.eyebrow} title={t.contact.title} intro={t.contact.description} />
@@ -127,7 +127,7 @@ export function ContactSection() {
               <ul className="mt-7 space-y-5">
                 {info.map(({ icon: Icon, label, value, href }) => (
                   <li key={label} className="flex items-start gap-4">
-                    <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-brand shadow-sm ring-1 ring-gold/40">
+                    <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-surface text-brand shadow-sm ring-1 ring-gold/40">
                       <Icon className="h-[1.1rem] w-[1.1rem]" aria-hidden />
                     </span>
                     <div>
@@ -148,7 +148,7 @@ export function ContactSection() {
                 ))}
               </ul>
               {info.some((i) => !i.value) && (
-                <p className="mt-8 flex items-start gap-2 rounded-2xl bg-white/70 p-4 text-sm text-muted">
+                <p className="mt-8 flex items-start gap-2 rounded-2xl bg-surface/70 p-4 text-sm text-muted">
                   <Info className="mt-0.5 h-4 w-4 shrink-0 text-gold-deep" aria-hidden />
                   {t.contact.infoNote}
                 </p>
@@ -157,7 +157,7 @@ export function ContactSection() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <form noValidate onSubmit={onSubmit} className="rounded-3xl border border-line bg-white p-6 shadow-soft sm:p-9" aria-describedby={`${uid}-status`}>
+            <form noValidate onSubmit={onSubmit} className="rounded-3xl border border-line bg-surface p-6 shadow-soft sm:p-9" aria-describedby={`${uid}-status`}>
               {/* Honeypot for spam bots — hidden from people and assistive tech */}
               <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
               <div className="grid gap-5 sm:grid-cols-2">

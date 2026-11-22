@@ -195,7 +195,7 @@ export function HeroSlider() {
         </div>
       </div>
 
-      <WaveDivider fill="#F5FAF7" />
+      <WaveDivider fill="var(--color-offwhite)" />
     </motion.section>
   );
 }
