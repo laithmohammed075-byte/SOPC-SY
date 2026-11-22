@@ -2,6 +2,7 @@
 
 import { ArrowUp, Mail, MapPin, Phone } from "lucide-react";
 import { company, serviceIds } from "@/content/site";
+import { servicePath } from "@/lib/route";
 import { useLanguage } from "@/lib/i18n";
 import { Logo } from "./ui";
 
@@ -70,7 +71,7 @@ export function Footer() {
           <ul className="mt-5 space-y-2.5">
             {serviceIds.map((id) => (
               <li key={id}>
-                <a href={`#service-${id}`} className="text-sm text-muted transition-colors hover:text-brand">
+                <a href={servicePath(id)} className="text-sm text-muted transition-colors hover:text-brand">
                   {t.services.items[id].title}
                 </a>
               </li>

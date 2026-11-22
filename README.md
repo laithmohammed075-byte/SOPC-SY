@@ -64,7 +64,8 @@ src/
     HeroSlider.tsx          full-width image slider (autoplay, pause, arrows, dots, keyboard)
     WaveDivider.tsx         SVG wave with emerald + gold crest lines
     AboutSection.tsx        intro with the official logo
-    ServicesSection.tsx     five circular services + details dialog (deep link: #service-<id>)
+    ServicesSection.tsx     five circular services, each linking to its own page
+    ServicePage.tsx         service detail page, shown at #/services/<id>
     QHSESection.tsx         QHSE with overlapping circular badge
     CareersSection.tsx      careers block below Contact (pre-selects "Careers" in the form)
     WhyChooseUs.tsx         four advantages
@@ -72,6 +73,7 @@ src/
     Footer.tsx              light footer with gold divider
     FloatingContactButton.tsx
     ui.tsx                  Reveal, SectionHeading, Logo helpers
+  lib/route.ts              small hash router (#/services/<id>) that works in the single-file build
   content/site.ts           ALL editable copy (EN + AR), company details, image manifest
   lib/i18n.tsx              language context (sets <html lang/dir>)
   lib/contact.ts            form validation + submit helper
@@ -87,6 +89,9 @@ Everything visible on the page is in **`src/content/site.ts`**:
 - `company.social` — add official profile URLs. The footer shows nothing while this list is empty.
 - `company.siteUrl` — set the production domain (used for canonical and Open Graph URLs).
 - `en` / `ar` dictionaries — every heading, paragraph and button label in both languages.
+- Service pages: each service's text is in `services.items` (`title`, `short`, `body`) in both
+  dictionaries. Page links: `#/services/oil-gas`, `#/services/petrochemical`, `#/services/engineering`,
+  `#/services/fabrication`, `#/services/technical-commercial`.
   The **About, Services and QHSE copy is draft text.** Service descriptions are labelled as
   placeholders until SOPC provides official content.
 

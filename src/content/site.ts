@@ -132,6 +132,8 @@ const en = {
     learnMore: "View details",
     draftNote: "Draft description — official service details to be provided by SOPC.",
     discuss: "Discuss this service",
+    backToServices: "All services",
+    otherServices: "Other services",
     close: "Close",
     items: {
       "oil-gas": {
@@ -312,6 +314,8 @@ const ar: Dict = {
     learnMore: "عرض التفاصيل",
     draftNote: "وصف مبدئي — ستزوّدنا SOPC بالتفاصيل الرسمية للخدمة.",
     discuss: "ناقش هذه الخدمة",
+    backToServices: "جميع الخدمات",
+    otherServices: "خدمات أخرى",
     close: "إغلاق",
     items: {
       "oil-gas": {

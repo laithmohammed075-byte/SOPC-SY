@@ -1,12 +1,12 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, DraftingCompass, Droplets, Factory, FlaskConical, Handshake, X, type LucideIcon } from "lucide-react";
+import { ArrowRight, DraftingCompass, Droplets, Factory, FlaskConical, Handshake, type LucideIcon } from "lucide-react";
 import Image from "next/image";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { images, serviceIds, type ServiceId } from "@/content/site";
 import { useLanguage } from "@/lib/i18n";
-import { Reveal, SectionHeading, scrollToId } from "./ui";
+import { servicePath } from "@/lib/route";
+import { Reveal, SectionHeading } from "./ui";
 
 export const serviceIcons: Record<ServiceId, LucideIcon> = {
   "oil-gas": Droplets,
@@ -16,104 +16,9 @@ export const serviceIcons: Record<ServiceId, LucideIcon> = {
   "technical-commercial": Handshake,
 };
 
-/** Event used to pre-select a service in the contact form. */
-export const SELECT_SERVICE_EVENT = "sopc:select-service";
-
-function ServiceDialog({ id, onClose }: { id: ServiceId; onClose: () => void }) {
-  const { t } = useLanguage();
-  const closeRef = useRef<HTMLButtonElement>(null);
-  const item = t.services.items[id];
-  const Icon = serviceIcons[id];
-
-  useEffect(() => {
-    const prev = document.activeElement as HTMLElement | null;
-    closeRef.current?.focus();
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
-    document.addEventListener("keydown", onKey);
-    return () => {
-      document.removeEventListener("keydown", onKey);
-      prev?.focus?.();
-    };
-  }, [onClose]);
-
-  const discuss = () => {
-    window.dispatchEvent(new CustomEvent(SELECT_SERVICE_EVENT, { detail: id }));
-    onClose();
-    window.setTimeout(() => scrollToId("contact"), 50);
-  };
-
-  return (
-    <motion.div
-      className="fixed inset-0 z-[70] flex items-end justify-center p-0 sm:items-center sm:p-6"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
-      <button aria-label={t.services.close} tabIndex={-1} onClick={onClose} className="absolute inset-0 bg-ink/25 backdrop-blur-sm" />
-      <motion.div
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="service-dialog-title"
-        initial={{ y: 40, opacity: 0, scale: 0.98 }}
-        animate={{ y: 0, opacity: 1, scale: 1 }}
-        exit={{ y: 30, opacity: 0 }}
-        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-        className="relative w-full max-w-lg rounded-t-3xl border border-line bg-white p-7 shadow-lift sm:rounded-3xl sm:p-9"
-      >
-        <span aria-hidden className="gold-rule absolute inset-x-10 top-0" />
-        <button
-          ref={closeRef}
-          type="button"
-          onClick={onClose}
-          aria-label={t.services.close}
-          className="absolute end-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full text-muted transition-colors hover:bg-mint hover:text-brand"
-        >
-          <X className="h-5 w-5" />
-        </button>
-        <span className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-mint text-brand ring-1 ring-gold/50">
-          <Icon className="h-6 w-6" aria-hidden />
-        </span>
-        <h3 id="service-dialog-title" className="font-display mt-5 text-2xl text-ink sm:text-3xl">
-          {item.title}
-        </h3>
-        <p className="mt-2 font-semibold text-brand">{item.short}</p>
-        <p className="mt-4 leading-relaxed text-muted">{item.body}</p>
-        <p className="mt-5 rounded-xl bg-gold-soft/50 px-4 py-3 text-xs font-medium text-[#6d5517]">{t.services.draftNote}</p>
-        <button
-          type="button"
-          onClick={discuss}
-          className="group mt-7 inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-brand-2"
-        >
-          {t.services.discuss}
-          <ArrowRight className="rtl-flip h-4 w-4" aria-hidden />
-        </button>
-      </motion.div>
-    </motion.div>
-  );
-}
-
 export function ServicesSection() {
   const { t } = useLanguage();
-  const [open, setOpen] = useState<ServiceId | null>(null);
   const [imgFailed, setImgFailed] = useState(false);
-
-  // Deep links: #service-<id> opens the matching service details.
-  useEffect(() => {
-    const sync = () => {
-      const m = window.location.hash.match(/^#service-(.+)$/);
-      if (m && (serviceIds as readonly string[]).includes(m[1])) setOpen(m[1] as ServiceId);
-    };
-    sync();
-    window.addEventListener("hashchange", sync);
-    return () => window.removeEventListener("hashchange", sync);
-  }, []);
-
-  const close = useCallback(() => {
-    setOpen(null);
-    if (window.location.hash.startsWith("#service-")) {
-      history.replaceState(null, "", window.location.pathname + window.location.search);
-    }
-  }, []);
 
   return (
     <section id="services" aria-labelledby="services-title" className="relative isolate overflow-hidden py-20 sm:py-24 lg:py-32">
@@ -145,16 +50,10 @@ export function ServicesSection() {
             return (
               <li key={id} className={`w-[calc(50%-0.5rem)] sm:w-auto ${i % 2 === 1 ? "lg:translate-y-12" : ""}`}>
                 <Reveal delay={0.08 * i} className="flex justify-center">
+                  {/* Each circle opens its own service page (#/services/<id>) */}
                   <a
-                    id={`service-${id}`}
-                    href={`#service-${id}`}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      history.replaceState(null, "", `#service-${id}`);
-                      setOpen(id);
-                    }}
-                    aria-haspopup="dialog"
-                    className="group relative flex aspect-square w-[9.25rem] scroll-mt-40 flex-col items-center justify-center rounded-full text-center min-[400px]:w-40 sm:w-52 lg:w-[12.5rem] xl:w-[13.5rem]"
+                    href={servicePath(id)}
+                    className="group relative flex aspect-square w-[9.25rem] flex-col items-center justify-center rounded-full text-center min-[400px]:w-40 sm:w-52 lg:w-[12.5rem] xl:w-[13.5rem]"
                   >
                     {/* dashed outer ring */}
                     <span
@@ -186,8 +85,6 @@ export function ServicesSection() {
           })}
         </ul>
       </div>
-
-      <AnimatePresence>{open && <ServiceDialog key={open} id={open} onClose={close} />}</AnimatePresence>
     </section>
   );
 }

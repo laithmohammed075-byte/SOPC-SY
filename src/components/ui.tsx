@@ -83,6 +83,10 @@ export function Logo({ size = 72, priority = false }: { size?: number; priority?
 /** Smoothly scroll to an in-page anchor and move focus for keyboard / screen-reader users. */
 export function scrollToId(id: string) {
   const el = document.getElementById(id);
-  if (!el) return;
+  if (!el) {
+    // Not on the home page (e.g. a service page): navigate home to that section.
+    window.location.hash = id;
+    return;
+  }
   el.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
 }

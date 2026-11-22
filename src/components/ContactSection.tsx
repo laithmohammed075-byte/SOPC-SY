@@ -5,7 +5,7 @@ import { useEffect, useId, useState } from "react";
 import { company, serviceIds } from "@/content/site";
 import { submitContact, validateContact, type ContactErrors, type ContactPayload, type SubmitResult } from "@/lib/contact";
 import { useLanguage } from "@/lib/i18n";
-import { SELECT_SERVICE_EVENT } from "./ServicesSection";
+import { SELECT_SERVICE_EVENT, consumePendingService } from "@/lib/route";
 import { Reveal, SectionHeading } from "./ui";
 
 const empty: ContactPayload = { fullName: "", company: "", email: "", phone: "", service: "", message: "" };
@@ -55,13 +55,14 @@ export function ContactSection() {
   const { t, lang } = useLanguage();
   const f = t.contact.form;
   const uid = useId();
-  const [values, setValues] = useState<ContactPayload>(empty);
+  const [values, setValues] = useState<ContactPayload>(() => ({ ...empty, service: consumePendingService() ?? "" }));
   const [errors, setErrors] = useState<ContactErrors>({});
   const [status, setStatus] = useState<"idle" | "sending" | SubmitResult>("idle");
 
   useEffect(() => {
     const onSelect = (e: Event) => {
       const id = (e as CustomEvent<string>).detail;
+      consumePendingService();
       setValues((v) => ({ ...v, service: id }));
       setErrors((er) => ({ ...er, service: undefined }));
     };

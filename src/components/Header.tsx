@@ -5,6 +5,7 @@ import { ChevronDown, Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { serviceIds } from "@/content/site";
 import { useLanguage } from "@/lib/i18n";
+import { serviceFromHash, servicePath, useHash } from "@/lib/route";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { Logo } from "./ui";
 
@@ -13,7 +14,7 @@ type NavItem = { id: string; href: string; label: string; children?: NavChild[] 
 
 const sectionIds = ["home", "about", "services", "qhse", "why", "contact", "careers"];
 
-function useActiveSection() {
+function useActiveSection(view: string) {
   const [active, setActive] = useState("home");
   useEffect(() => {
     const els = sectionIds.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
@@ -27,7 +28,7 @@ function useActiveSection() {
     );
     els.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, []);
+  }, [view]);
   return active;
 }
 
@@ -125,7 +126,9 @@ function NavLink({ href, label, active }: { href: string; label: string; active:
 
 export function Header() {
   const { t } = useLanguage();
-  const active = useActiveSection();
+  const hash = useHash();
+  const serviceView = serviceFromHash(hash);
+  const active = useActiveSection(serviceView ?? "home");
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [expanded, setExpanded] = useState<string | null>(null);
@@ -165,7 +168,7 @@ export function Header() {
       href: "#services",
       label: t.nav.services,
       children: [
-        ...serviceIds.map((id) => ({ href: `#service-${id}`, label: t.services.items[id].title })),
+        ...serviceIds.map((id) => ({ href: servicePath(id), label: t.services.items[id].title })),
         { href: "#services", label: t.nav.allServices },
       ],
     },
@@ -182,7 +185,9 @@ export function Header() {
   ];
 
   const isActive = (id: string) =>
-    active === id || (id === "about" && active === "why") || (id === "contact" && active === "careers");
+    serviceView
+      ? id === "services"
+      : active === id || (id === "about" && active === "why") || (id === "contact" && active === "careers");
 
   return (
     <header

@@ -2,7 +2,7 @@
 
 import { ArrowRight, Briefcase } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
-import { SELECT_SERVICE_EVENT } from "./ServicesSection";
+import { selectService } from "@/lib/route";
 import { Eyebrow, Reveal, scrollToId } from "./ui";
 
 export function CareersSection() {
@@ -30,7 +30,7 @@ export function CareersSection() {
               <button
                 type="button"
                 onClick={() => {
-                  window.dispatchEvent(new CustomEvent(SELECT_SERVICE_EVENT, { detail: "careers" }));
+                  selectService("careers");
                   scrollToId("contact");
                 }}
                 className="group inline-flex shrink-0 items-center justify-center gap-2 self-start rounded-full border-[1.5px] border-brand px-7 py-3.5 text-sm font-bold text-brand transition-all duration-300 hover:bg-brand hover:text-white md:self-center"
