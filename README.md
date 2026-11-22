@@ -39,6 +39,9 @@ form always reports that online submission is not configured, because there is n
 GitHub repository → **Settings** → **Pages** → Source: **Deploy from a branch** → Branch: **main**, folder: **/docs** → **Save**.
 The site appears at `https://<account>.github.io/<repo>/` after a minute or two.
 
+Custom domain: `docs/CNAME` contains `sopc-sy.com`. DNS at the registrar (Spaceship): four `A` records on `@`
+(185.199.108.153, .109.153, .110.153, .111.153) and a `CNAME` on `www` → `laithmohammed075-byte.github.io`.
+
 Quality checks:
 
 ```bash

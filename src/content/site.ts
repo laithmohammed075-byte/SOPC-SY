@@ -39,7 +39,7 @@ export const company = {
    */
   social: [] as { network: string; url: string }[],
   /** Public site URL, used for Open Graph metadata. */
-  siteUrl: "https://laithmohammed075-byte.github.io/SOPC-SY/",
+  siteUrl: "https://sopc-sy.com/",
 };
 
 /** Service identifiers — used for anchors (#service-<id>) and the contact form. */
