@@ -53,7 +53,7 @@ export function QHSESection() {
                   fill
                   sizes="(min-width: 1024px) 600px, 100vw"
                   quality={80}
-                  className="object-cover object-[center_80%]"
+                  className="object-cover object-[50%_70%]"
                   onError={() => setFailed(true)}
                 />
               )}

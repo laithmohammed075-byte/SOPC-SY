@@ -69,7 +69,7 @@ export const images = {
     { src: `${IMG}project-petrochemical-facility.webp`, unsplashId: "photo-1516937941344-00b4e0337589" },
     { src: `${IMG}project-industrial-engineering.webp`, unsplashId: "photo-1581092446327-9b52bd1570c2" },
   ],
-  qhse: { src: `${IMG}qhse-workers-ppe.webp`, unsplashId: "photo-1516216628859-9bccecab13ca" },
+  qhse: { src: `${IMG}qhse-workers-ppe.webp`, source: "SOPC" },
 };
 
 const en = {
@@ -200,7 +200,7 @@ const en = {
     body: "At SOPC, quality, safety, and environmental responsibility are central to our approach to industrial operations.",
     body2:
       "We aim to plan and carry out every activity with care for our people, our partners, the communities around us and the environment we share.",
-    imageAlt: "Industrial workers wearing hard hats and safety equipment",
+    imageAlt: "SOPC team in company coveralls, hard hats and gloves climbing an industrial stairway",
     features: [
       { title: "Quality", text: "Consistent standards and careful verification at every step." },
       { title: "Safety", text: "Protecting people through planning, training and the right equipment." },
@@ -408,7 +408,7 @@ const ar: Dict = {
     body: "في SOPC، تُعدّ الجودة والسلامة والمسؤولية البيئية محوراً أساسياً في نهجنا تجاه العمليات الصناعية.",
     body2:
       "نسعى إلى تخطيط كل نشاط وتنفيذه بعناية تحفظ سلامة فرقنا وشركائنا والمجتمعات من حولنا والبيئة التي نتشاركها.",
-    imageAlt: "عمّال صناعيون يرتدون الخوذ ومعدات السلامة",
+    imageAlt: "فريق SOPC بلباس الشركة والخوذ والقفازات يصعد درجاً صناعياً",
     features: [
       { title: "الجودة", text: "معايير ثابتة وتحقّق دقيق في كل خطوة." },
       { title: "السلامة", text: "حماية الأفراد بالتخطيط والتدريب والمعدات المناسبة." },
