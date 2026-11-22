@@ -81,8 +81,13 @@ export function ServicePage({ id }: { id: ServiceId }) {
           </nav>
 
           <Reveal className="mt-8 max-w-3xl">
-            <span className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-white text-brand shadow-soft ring-1 ring-gold/60">
-              <Icon className="h-7 w-7" aria-hidden />
+            <span className="relative block h-28 w-28 sm:h-32 sm:w-32">
+              <span className="absolute inset-0 overflow-hidden rounded-full border-[3px] border-white shadow-lift ring-[1.5px] ring-brand/70">
+                <Image src={images.serviceImages[id]} alt="" fill sizes="128px" className="object-cover" />
+              </span>
+              <span className="absolute -bottom-1 -end-1 inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-white bg-brand text-white ring-1 ring-gold/70">
+                <Icon className="h-[1.1rem] w-[1.1rem]" aria-hidden />
+              </span>
             </span>
             <Eyebrow className="mt-6 flex">{t.services.eyebrow}</Eyebrow>
             <h1 id="service-title" className="font-display mt-3 text-4xl leading-tight text-ink sm:text-5xl lg:text-6xl">
@@ -128,15 +133,14 @@ export function ServicePage({ id }: { id: ServiceId }) {
               <span aria-hidden className="mt-3 block h-px w-8 bg-gold" />
               <ul className="mt-5 space-y-2">
                 {others.map((o) => {
-                  const OIcon = serviceIcons[o];
                   return (
                     <li key={o}>
                       <a
                         href={servicePath(o)}
                         className="group flex items-center gap-3 rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-ink shadow-sm ring-1 ring-line transition-all hover:-translate-y-0.5 hover:text-brand hover:ring-brand/30"
                       >
-                        <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-mint text-brand ring-1 ring-gold/50">
-                          <OIcon className="h-4 w-4" aria-hidden />
+                        <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full ring-1 ring-brand/40">
+                          <Image src={images.serviceImages[o]} alt="" fill sizes="40px" className="object-cover" />
                         </span>
                         <span className="flex-1">{t.services.items[o].title}</span>
                         <ArrowRight className="rtl-flip h-4 w-4 text-brand/60 transition-transform group-hover:translate-x-0.5" aria-hidden />

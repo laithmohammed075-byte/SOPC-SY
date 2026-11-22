@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, DraftingCompass, Droplets, Factory, FlaskConical, Handshake, type LucideIcon } from "lucide-react";
+import { ArrowRight, Container, Droplets, Gauge, Presentation, Wrench, type LucideIcon } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import { images, serviceIds, type ServiceId } from "@/content/site";
@@ -9,11 +9,11 @@ import { servicePath } from "@/lib/route";
 import { Reveal, SectionHeading } from "./ui";
 
 export const serviceIcons: Record<ServiceId, LucideIcon> = {
-  "oil-gas": Droplets,
-  petrochemical: FlaskConical,
-  engineering: DraftingCompass,
-  fabrication: Factory,
-  "technical-commercial": Handshake,
+  "crude-oil": Droplets,
+  "well-maintenance": Wrench,
+  "pumping-stations": Gauge,
+  "import-export": Container,
+  training: Presentation,
 };
 
 export function ServicesSection() {
@@ -48,35 +48,37 @@ export function ServicesSection() {
             const Icon = serviceIcons[id];
             const item = t.services.items[id];
             return (
-              <li key={id} className={`w-[calc(50%-0.5rem)] sm:w-auto ${i % 2 === 1 ? "lg:translate-y-12" : ""}`}>
+              <li key={id} className={`w-[calc(50%-0.5rem)] sm:w-56 lg:w-auto lg:flex-1 ${i % 2 === 1 ? "lg:translate-y-12" : ""}`}>
                 <Reveal delay={0.08 * i} className="flex justify-center">
                   {/* Each circle opens its own service page (#/services/<id>) */}
-                  <a
-                    href={servicePath(id)}
-                    className="group relative flex aspect-square w-[9.25rem] flex-col items-center justify-center rounded-full text-center min-[400px]:w-40 sm:w-52 lg:w-[12.5rem] xl:w-[13.5rem]"
-                  >
-                    {/* dashed outer ring */}
-                    <span
-                      aria-hidden
-                      className="absolute -inset-2.5 rounded-full border border-dashed border-brand/35 transition-all duration-700 group-hover:rotate-45 group-hover:border-gold sm:-inset-3"
-                    />
-                    {/* circle body */}
-                    <span
-                      aria-hidden
-                      className="absolute inset-0 rounded-full border-[1.5px] border-brand/70 bg-white/85 shadow-soft backdrop-blur-md transition-all duration-500 group-hover:scale-[1.04] group-hover:border-brand group-hover:shadow-lift"
-                    />
-                    {/* gold accent dot */}
-                    <span aria-hidden className="absolute top-[7%] h-2 w-2 rounded-full bg-gold shadow-[0_0_0_4px_rgba(214,173,67,0.18)]" />
-
-                    <span className="relative flex flex-col items-center px-4 transition-transform duration-500 group-hover:-translate-y-1 sm:px-6">
-                      <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-mint text-brand ring-1 ring-gold/60 transition-colors duration-500 group-hover:bg-brand group-hover:text-white sm:h-14 sm:w-14">
-                        <Icon className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden />
+                  <a href={servicePath(id)} className="group flex w-full flex-col items-center text-center">
+                    <span className="relative block aspect-square w-[8.75rem] min-[400px]:w-36 sm:w-44 lg:w-[11rem] xl:w-[12rem]">
+                      {/* dashed outer ring */}
+                      <span
+                        aria-hidden
+                        className="absolute -inset-2.5 rounded-full border border-dashed border-brand/40 transition-all duration-700 group-hover:rotate-45 group-hover:border-gold sm:-inset-3"
+                      />
+                      {/* photo */}
+                      <span className="absolute inset-0 overflow-hidden rounded-full border-[3px] border-white bg-mint shadow-soft ring-[1.5px] ring-brand/70 transition-all duration-500 group-hover:shadow-lift group-hover:ring-brand">
+                        <Image
+                          src={images.serviceImages[id]}
+                          alt=""
+                          fill
+                          sizes="(min-width: 1280px) 192px, (min-width: 640px) 176px, 144px"
+                          className="object-cover transition-transform duration-700 group-hover:scale-[1.08]"
+                        />
                       </span>
-                      <span className="mt-2.5 text-[0.8rem] font-bold leading-snug text-ink sm:mt-3.5 sm:text-[0.95rem]">{item.title}</span>
-                      <span className="mt-1.5 hidden items-center gap-1 text-[0.7rem] font-semibold uppercase tracking-wider text-brand opacity-70 transition-opacity group-hover:opacity-100 sm:inline-flex">
-                        {t.services.learnMore}
-                        <ArrowRight className="rtl-flip h-3 w-3" aria-hidden />
+                      {/* icon badge */}
+                      <span className="absolute -bottom-3 left-1/2 inline-flex h-11 w-11 -translate-x-1/2 items-center justify-center rounded-full border-2 border-white bg-brand text-white shadow-soft ring-1 ring-gold/70 transition-colors duration-500 group-hover:bg-gold sm:h-12 sm:w-12">
+                        <Icon className="h-5 w-5" aria-hidden />
                       </span>
+                    </span>
+                    <span className="mt-6 max-w-[11rem] text-[0.85rem] font-bold leading-snug text-ink transition-colors group-hover:text-brand sm:max-w-[12rem] sm:text-[0.98rem]">
+                      {item.title}
+                    </span>
+                    <span className="mt-1.5 inline-flex items-center gap-1 text-[0.68rem] font-semibold uppercase tracking-wider text-brand opacity-70 transition-opacity group-hover:opacity-100 sm:text-[0.7rem]">
+                      {t.services.learnMore}
+                      <ArrowRight className="rtl-flip h-3 w-3" aria-hidden />
                     </span>
                   </a>
                 </Reveal>

@@ -89,8 +89,9 @@ Everything visible on the page is in **`src/content/site.ts`**:
 - `company.siteUrl` — set the production domain (used for canonical and Open Graph URLs).
 - `en` / `ar` dictionaries — every heading, paragraph and button label in both languages.
 - Service pages: each service's text is in `services.items` (`title`, `short`, `body`) in both
-  dictionaries. Page links: `#/services/oil-gas`, `#/services/petrochemical`, `#/services/engineering`,
-  `#/services/fabrication`, `#/services/technical-commercial`.
+  dictionaries. Page links: `#/services/crude-oil`, `#/services/well-maintenance`,
+  `#/services/pumping-stations`, `#/services/import-export`, `#/services/training`.
+  Circle photos: `public/images/service-<id>.webp` (cropped from SOPC's "Our Services" artwork).
   The **About, Services and QHSE copy is draft text.** Service descriptions are labelled as
   placeholders until SOPC provides official content.
 

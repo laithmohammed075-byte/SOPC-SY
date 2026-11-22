@@ -38,11 +38,11 @@ export const company = {
 
 /** Service identifiers — used for anchors (#service-<id>) and the contact form. */
 export const serviceIds = [
-  "oil-gas",
-  "petrochemical",
-  "engineering",
-  "fabrication",
-  "technical-commercial",
+  "crude-oil",
+  "well-maintenance",
+  "pumping-stations",
+  "import-export",
+  "training",
 ] as const;
 export type ServiceId = (typeof serviceIds)[number];
 
@@ -64,6 +64,14 @@ export const images = {
     { src: `${IMG}hero-refinery-daylight.webp`, unsplashId: "photo-1516937941344-00b4e0337589" },
   ],
   services: { src: `${IMG}services-refinery-piping.webp`, unsplashId: "photo-1513828742140-ccaa28f3eda0" },
+  /** One photo per service circle — cropped from SOPC's own "Our Services" artwork. */
+  serviceImages: {
+    "crude-oil": `${IMG}service-crude-oil.webp`,
+    "well-maintenance": `${IMG}service-well-maintenance.webp`,
+    "pumping-stations": `${IMG}service-pumping-stations.webp`,
+    "import-export": `${IMG}service-import-export.webp`,
+    training: `${IMG}service-training.webp`,
+  } as Record<ServiceId, string>,
   qhse: { src: `${IMG}qhse-workers-ppe.webp`, source: "SOPC" },
 };
 
@@ -127,7 +135,7 @@ const en = {
     eyebrow: "Our Services",
     title: "Integrated Industrial Solutions",
     intro:
-      "From upstream support to plant engineering and commercial services, SOPC brings together the capabilities industrial clients need under one dependable partner.",
+      "From crude oil extraction and field operations to pumping stations, equipment supply and training, SOPC brings together the services the oil sector needs under one dependable partner.",
     imageAlt: "Bright refinery piping in an industrial plant",
     learnMore: "View details",
     draftNote: "Draft description — official service details to be provided by SOPC.",
@@ -136,30 +144,30 @@ const en = {
     otherServices: "Other services",
     close: "Close",
     items: {
-      "oil-gas": {
-        title: "Oil & Gas Services",
-        short: "Support for oil and gas operations and field activities.",
-        body: "Placeholder: an overview of SOPC's oil and gas service offering will be published here once official details are confirmed.",
+      "crude-oil": {
+        title: "Crude Oil Extraction",
+        short: "Crude oil extraction.",
+        body: "Placeholder: a detailed description of SOPC's crude oil extraction services will be published here once official details are provided.",
       },
-      petrochemical: {
-        title: "Petrochemical Solutions",
-        short: "Solutions for petrochemical plants and processes.",
-        body: "Placeholder: an overview of SOPC's petrochemical solutions will be published here once official details are confirmed.",
+      "well-maintenance": {
+        title: "Oil Well Maintenance",
+        short: "Oil well maintenance and field operations.",
+        body: "Placeholder: a detailed description of SOPC's oil well maintenance and field operations will be published here once official details are provided.",
       },
-      engineering: {
-        title: "Engineering Projects",
-        short: "Engineering support for industrial projects.",
-        body: "Placeholder: an overview of SOPC's engineering project capabilities will be published here once official details are confirmed.",
+      "pumping-stations": {
+        title: "Pumping Stations",
+        short: "Operation and maintenance of oil and its derivatives pumping stations.",
+        body: "Placeholder: a detailed description of SOPC's pumping station operation and maintenance services will be published here once official details are provided.",
       },
-      fabrication: {
-        title: "Industrial Fabrication",
-        short: "Fabrication for industrial applications.",
-        body: "Placeholder: an overview of SOPC's industrial fabrication services will be published here once official details are confirmed.",
+      "import-export": {
+        title: "Import & Export",
+        short: "Import and export of equipment, machinery, and materials related to its operations.",
+        body: "Placeholder: a detailed description of SOPC's import and export services will be published here once official details are provided.",
       },
-      "technical-commercial": {
-        title: "Technical & Commercial Services",
-        short: "Equipment, chemicals, trading and technical services.",
-        body: "Placeholder: an overview of SOPC's technical and commercial services — including equipment, chemicals and trading — will be published here once official details are confirmed.",
+      training: {
+        title: "Training Consultancy",
+        short: "Provision of training consultancy services.",
+        body: "Placeholder: a detailed description of SOPC's training consultancy services will be published here once official details are provided.",
       },
     } as Record<ServiceId, { title: string; short: string; body: string }>,
   },
@@ -303,7 +311,7 @@ const ar: Dict = {
     eyebrow: "خدماتنا",
     title: "حلول صناعية متكاملة",
     intro:
-      "من دعم العمليات النفطية إلى هندسة المنشآت والخدمات التجارية، تجمع SOPC القدرات التي يحتاجها العملاء الصناعيون لدى شريك واحد موثوق.",
+      "من استخراج النفط الخام والعمل في الحقول إلى محطات الضخ وتوريد المعدات والتدريب، تجمع SOPC الخدمات التي يحتاجها القطاع النفطي لدى شريك واحد موثوق.",
     imageAlt: "أنابيب مصفاة مضيئة داخل منشأة صناعية",
     learnMore: "عرض التفاصيل",
     draftNote: "وصف مبدئي — ستزوّدنا SOPC بالتفاصيل الرسمية للخدمة.",
@@ -312,30 +320,30 @@ const ar: Dict = {
     otherServices: "خدمات أخرى",
     close: "إغلاق",
     items: {
-      "oil-gas": {
-        title: "خدمات النفط والغاز",
-        short: "دعم عمليات النفط والغاز والأنشطة الميدانية.",
-        body: "نص مؤقت: سيُنشر هنا عرض لخدمات SOPC في مجال النفط والغاز بعد تأكيد التفاصيل الرسمية.",
+      "crude-oil": {
+        title: "استخراج النفط الخام",
+        short: "استخراج النفط الخام.",
+        body: "نص مؤقت: سيُنشر هنا وصف تفصيلي لخدمات SOPC في استخراج النفط الخام بعد تزويدنا بالتفاصيل الرسمية.",
       },
-      petrochemical: {
-        title: "الحلول البتروكيماوية",
-        short: "حلول للمنشآت والعمليات البتروكيماوية.",
-        body: "نص مؤقت: سيُنشر هنا عرض للحلول البتروكيماوية التي تقدّمها SOPC بعد تأكيد التفاصيل الرسمية.",
+      "well-maintenance": {
+        title: "صيانة الآبار النفطية",
+        short: "صيانة الآبار النفطية والعمل على الحقول النفطية.",
+        body: "نص مؤقت: سيُنشر هنا وصف تفصيلي لخدمات SOPC في صيانة الآبار النفطية والعمل على الحقول بعد تزويدنا بالتفاصيل الرسمية.",
       },
-      engineering: {
-        title: "المشاريع الهندسية",
-        short: "دعم هندسي للمشاريع الصناعية.",
-        body: "نص مؤقت: سيُنشر هنا عرض لقدرات SOPC في المشاريع الهندسية بعد تأكيد التفاصيل الرسمية.",
+      "pumping-stations": {
+        title: "محطات ضخ النفط",
+        short: "تشغيل وصيانة محطات ضخ النفط ومشتقاته.",
+        body: "نص مؤقت: سيُنشر هنا وصف تفصيلي لخدمات SOPC في تشغيل وصيانة محطات الضخ بعد تزويدنا بالتفاصيل الرسمية.",
       },
-      fabrication: {
-        title: "التصنيع الصناعي",
-        short: "أعمال تصنيع للتطبيقات الصناعية.",
-        body: "نص مؤقت: سيُنشر هنا عرض لخدمات التصنيع الصناعي لدى SOPC بعد تأكيد التفاصيل الرسمية.",
+      "import-export": {
+        title: "الاستيراد والتصدير",
+        short: "استيراد وتصدير المعدات والتجهيزات والمواد المرتبطة بنشاطها.",
+        body: "نص مؤقت: سيُنشر هنا وصف تفصيلي لخدمات SOPC في الاستيراد والتصدير بعد تزويدنا بالتفاصيل الرسمية.",
       },
-      "technical-commercial": {
-        title: "الخدمات الفنية والتجارية",
-        short: "المعدات والكيماويات والتجارة والخدمات الفنية.",
-        body: "نص مؤقت: سيُنشر هنا عرض للخدمات الفنية والتجارية لدى SOPC — بما فيها المعدات والكيماويات والتجارة — بعد تأكيد التفاصيل الرسمية.",
+      training: {
+        title: "استشارات التدريب",
+        short: "تقديم خدمات استشارات التدريب.",
+        body: "نص مؤقت: سيُنشر هنا وصف تفصيلي لخدمات SOPC في استشارات التدريب بعد تزويدنا بالتفاصيل الرسمية.",
       },
     },
   },
