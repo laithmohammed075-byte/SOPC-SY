@@ -70,7 +70,6 @@ src/
     WhyChooseUs.tsx         four advantages
     ContactSection.tsx      validated contact form + contact info placeholders
     Footer.tsx              light footer with gold divider
-    FloatingContactButton.tsx
     ui.tsx                  Reveal, SectionHeading, Logo helpers
   lib/route.ts              small hash router (#/services/<id>) that works in the single-file build
   content/site.ts           ALL editable copy (EN + AR), company details, image manifest

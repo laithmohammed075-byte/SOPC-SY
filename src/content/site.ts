@@ -249,13 +249,6 @@ const en = {
     rights: "All rights reserved.",
     backToTop: "Back to top",
   },
-  floating: {
-    open: "Open contact options",
-    close: "Close contact options",
-    title: "How can we help?",
-    text: "Send us a message and the SOPC team will get back to you.",
-    cta: "Write to us",
-  },
 };
 
 export type Dict = typeof en;
@@ -423,13 +416,6 @@ const ar: Dict = {
     contact: "التواصل",
     rights: "جميع الحقوق محفوظة.",
     backToTop: "العودة إلى الأعلى",
-  },
-  floating: {
-    open: "فتح خيارات التواصل",
-    close: "إغلاق خيارات التواصل",
-    title: "كيف يمكننا مساعدتك؟",
-    text: "أرسل لنا رسالة وسيتواصل معك فريق SOPC.",
-    cta: "راسلنا",
   },
 };
 

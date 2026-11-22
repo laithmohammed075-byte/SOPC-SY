@@ -13,7 +13,6 @@ import { QHSESection } from "./QHSESection";
 import { WhyChooseUs } from "./WhyChooseUs";
 import { ContactSection } from "./ContactSection";
 import { Footer } from "./Footer";
-import { FloatingContactButton } from "./FloatingContactButton";
 
 function Page() {
   const { t } = useLanguage();
@@ -61,7 +60,6 @@ function Page() {
         )}
       </main>
       <Footer />
-      <FloatingContactButton />
     </>
   );
 }
