@@ -33,6 +33,12 @@ directly in a browser, send it by email, or upload it to any static host. Images
 slightly downsized copies; the originals in `public/images` are unchanged. In this version the contact
 form always reports that online submission is not configured, because there is no server.
 
+### Publishing with GitHub Pages
+
+`npm run build:static` also copies the file to `docs/index.html`. To publish it:
+GitHub repository → **Settings** → **Pages** → Source: **Deploy from a branch** → Branch: **main**, folder: **/docs** → **Save**.
+The site appears at `https://<account>.github.io/<repo>/` after a minute or two.
+
 Quality checks:
 
 ```bash

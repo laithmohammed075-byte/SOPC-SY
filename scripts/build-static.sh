@@ -15,4 +15,5 @@ sed -i 's|\${IMG}|images/|g' "$TMP/src/content/site.ts"
 
 (cd "$TMP" && STATIC_EXPORT=1 NEXT_PUBLIC_STATIC_EXPORT=1 npx next build)
 python3 "$ROOT/scripts/inline-static.py" "$TMP/out" "$ROOT/static-site"
-echo "Static site written to $ROOT/static-site/index.html"
+mkdir -p "$ROOT/docs" && cp "$ROOT/static-site/index.html" "$ROOT/docs/index.html" && touch "$ROOT/docs/.nojekyll"
+echo "Static site written to $ROOT/static-site/index.html (copied to docs/ for GitHub Pages)"
