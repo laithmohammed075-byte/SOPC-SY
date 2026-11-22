@@ -11,7 +11,7 @@ import { Logo } from "./ui";
 type NavChild = { href: string; label: string };
 type NavItem = { id: string; href: string; label: string; children?: NavChild[] };
 
-const sectionIds = ["home", "about", "services", "projects", "qhse", "careers", "why", "contact"];
+const sectionIds = ["home", "about", "services", "qhse", "why", "contact", "careers"];
 
 function useActiveSection() {
   const [active, setActive] = useState("home");
@@ -169,13 +169,20 @@ export function Header() {
         { href: "#services", label: t.nav.allServices },
       ],
     },
-    { id: "projects", href: "#projects", label: t.nav.projects },
     { id: "qhse", href: "#qhse", label: t.nav.qhse },
-    { id: "careers", href: "#careers", label: t.nav.careers },
-    { id: "contact", href: "#contact", label: t.nav.contact },
+    {
+      id: "contact",
+      href: "#contact",
+      label: t.nav.contact,
+      children: [
+        { href: "#contact", label: t.nav.sendMessage },
+        { href: "#careers", label: t.nav.careers },
+      ],
+    },
   ];
 
-  const isActive = (id: string) => active === id || (id === "about" && active === "why");
+  const isActive = (id: string) =>
+    active === id || (id === "about" && active === "why") || (id === "contact" && active === "careers");
 
   return (
     <header

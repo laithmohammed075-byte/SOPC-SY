@@ -63,11 +63,10 @@ src/
     LanguageSwitcher.tsx    EN / AR toggle
     HeroSlider.tsx          full-width image slider (autoplay, pause, arrows, dots, keyboard)
     WaveDivider.tsx         SVG wave with emerald + gold crest lines
-    AboutSection.tsx        intro + IndustrialIllustration.tsx (original SVG artwork)
+    AboutSection.tsx        intro with the official logo
     ServicesSection.tsx     five circular services + details dialog (deep link: #service-<id>)
-    ProjectsSection.tsx     three illustrative project-category cards
     QHSESection.tsx         QHSE with overlapping circular badge
-    CareersSection.tsx      careers call-to-action (pre-selects "Careers" in the form)
+    CareersSection.tsx      careers block below Contact (pre-selects "Careers" in the form)
     WhyChooseUs.tsx         four advantages
     ContactSection.tsx      validated contact form + contact info placeholders
     Footer.tsx              light footer with gold divider
@@ -88,8 +87,8 @@ Everything visible on the page is in **`src/content/site.ts`**:
 - `company.social` — add official profile URLs. The footer shows nothing while this list is empty.
 - `company.siteUrl` — set the production domain (used for canonical and Open Graph URLs).
 - `en` / `ar` dictionaries — every heading, paragraph and button label in both languages.
-  The **About, Services, Projects and QHSE copy is draft text.** Service descriptions and
-  project cards are labelled as placeholders or illustrative until SOPC provides official content.
+  The **About, Services and QHSE copy is draft text.** Service descriptions are labelled as
+  placeholders until SOPC provides official content.
 
 ## Contact form integration
 
@@ -113,14 +112,11 @@ The refinery images were slightly brightened to match the site's light visual di
 | File | Unsplash ID | Used in |
 | --- | --- | --- |
 | hero-petrochemical-pipework.webp | photo-1513828583688-c52646db42da | Hero slide 1 |
-| hero-technicians-site.webp | photo-1504307651254-35680f356dfd | Hero slide 2 |
+| hero-technicians-site.webp | supplied by SOPC | Hero slide 2 |
 | hero-engineering-facility.webp | photo-1610891015188-5369212db097 | Hero slide 3 |
 | hero-refinery-daylight.webp | photo-1516937941344-00b4e0337589 | Hero slide 4 |
 | services-refinery-piping.webp | photo-1513828742140-ccaa28f3eda0 | Services background |
-| project-oil-gas-infrastructure.webp | photo-1541888946425-d81bb19240f5 | Projects |
-| project-petrochemical-facility.webp | photo-1516937941344-00b4e0337589 | Projects |
-| project-industrial-engineering.webp | photo-1581092446327-9b52bd1570c2 | Projects |
-| qhse-workers-ppe.webp | photo-1516216628859-9bccecab13ca | QHSE |
+| qhse-workers-ppe.webp | supplied by SOPC | QHSE |
 
 **Oil pumpjack image:** there is no pumpjack photo yet. Unsplash's search could not be used from the
 build environment. To add one, download a bright daytime pumpjack photo from Unsplash, save it as

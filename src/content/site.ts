@@ -64,11 +64,6 @@ export const images = {
     { src: `${IMG}hero-refinery-daylight.webp`, unsplashId: "photo-1516937941344-00b4e0337589" },
   ],
   services: { src: `${IMG}services-refinery-piping.webp`, unsplashId: "photo-1513828742140-ccaa28f3eda0" },
-  projects: [
-    { src: `${IMG}project-oil-gas-infrastructure.webp`, unsplashId: "photo-1541888946425-d81bb19240f5" },
-    { src: `${IMG}project-petrochemical-facility.webp`, unsplashId: "photo-1516937941344-00b4e0337589" },
-    { src: `${IMG}project-industrial-engineering.webp`, unsplashId: "photo-1581092446327-9b52bd1570c2" },
-  ],
   qhse: { src: `${IMG}qhse-workers-ppe.webp`, source: "SOPC" },
 };
 
@@ -81,7 +76,7 @@ const en = {
     home: "Home",
     about: "About Us",
     services: "Services",
-    projects: "Projects",
+    sendMessage: "Send a Message",
     qhse: "QHSE",
     careers: "Careers",
     contact: "Contact Us",
@@ -165,34 +160,6 @@ const en = {
         body: "Placeholder: an overview of SOPC's technical and commercial services — including equipment, chemicals and trading — will be published here once official details are confirmed.",
       },
     } as Record<ServiceId, { title: string; short: string; body: string }>,
-  },
-  projects: {
-    eyebrow: "Selected Projects",
-    title: "Building Industrial Excellence",
-    intro:
-      "The categories below illustrate the kinds of work SOPC is focused on. Project references will be added as official information becomes available.",
-    illustrative: "Illustrative category",
-    note: "Images and descriptions are illustrative and do not depict completed SOPC projects.",
-    items: [
-      {
-        category: "Oil & Gas",
-        title: "Oil & Gas Infrastructure",
-        text: "Editable placeholder describing the type of oil and gas infrastructure work SOPC supports.",
-        alt: "Field crew in high-visibility clothing on a large infrastructure site",
-      },
-      {
-        category: "Petrochemicals",
-        title: "Petrochemical Facilities",
-        text: "Editable placeholder describing the type of petrochemical facility work SOPC supports.",
-        alt: "Refinery and petrochemical processing units in daylight",
-      },
-      {
-        category: "Engineering",
-        title: "Industrial Engineering",
-        text: "Editable placeholder describing the type of industrial engineering work SOPC supports.",
-        alt: "Engineers reviewing technical drawings together",
-      },
-    ],
   },
   qhse: {
     badge: "QHSE",
@@ -289,7 +256,7 @@ const ar: Dict = {
     home: "الرئيسية",
     about: "من نحن",
     services: "خدماتنا",
-    projects: "المشاريع",
+    sendMessage: "أرسل رسالة",
     qhse: "الجودة والسلامة",
     careers: "الوظائف",
     contact: "اتصل بنا",
@@ -373,34 +340,6 @@ const ar: Dict = {
         body: "نص مؤقت: سيُنشر هنا عرض للخدمات الفنية والتجارية لدى SOPC — بما فيها المعدات والكيماويات والتجارة — بعد تأكيد التفاصيل الرسمية.",
       },
     },
-  },
-  projects: {
-    eyebrow: "مشاريع مختارة",
-    title: "نبني التميّز الصناعي",
-    intro:
-      "توضّح الفئات التالية طبيعة الأعمال التي تركّز عليها SOPC. ستُضاف مراجع المشاريع عند توفّر المعلومات الرسمية.",
-    illustrative: "فئة توضيحية",
-    note: "الصور والأوصاف توضيحية ولا تمثّل مشاريع منجزة لـ SOPC.",
-    items: [
-      {
-        category: "النفط والغاز",
-        title: "البنية التحتية للنفط والغاز",
-        text: "نص قابل للتعديل يصف نوع أعمال البنية التحتية للنفط والغاز التي تدعمها SOPC.",
-        alt: "فريق ميداني بملابس عاكسة في موقع بنية تحتية كبير",
-      },
-      {
-        category: "البتروكيماويات",
-        title: "المنشآت البتروكيماوية",
-        text: "نص قابل للتعديل يصف نوع أعمال المنشآت البتروكيماوية التي تدعمها SOPC.",
-        alt: "وحدات تكرير ومعالجة بتروكيماوية في وضح النهار",
-      },
-      {
-        category: "الهندسة",
-        title: "الهندسة الصناعية",
-        text: "نص قابل للتعديل يصف نوع أعمال الهندسة الصناعية التي تدعمها SOPC.",
-        alt: "مهندسون يراجعون مخططات فنية معاً",
-      },
-    ],
   },
   qhse: {
     badge: "QHSE",

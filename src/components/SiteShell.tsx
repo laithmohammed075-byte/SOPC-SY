@@ -6,7 +6,6 @@ import { Header } from "./Header";
 import { HeroSlider } from "./HeroSlider";
 import { AboutSection } from "./AboutSection";
 import { ServicesSection } from "./ServicesSection";
-import { ProjectsSection } from "./ProjectsSection";
 import { QHSESection } from "./QHSESection";
 import { CareersSection } from "./CareersSection";
 import { WhyChooseUs } from "./WhyChooseUs";
@@ -29,11 +28,10 @@ function Page() {
         <HeroSlider />
         <AboutSection />
         <ServicesSection />
-        <ProjectsSection />
         <QHSESection />
-        <CareersSection />
         <WhyChooseUs />
         <ContactSection />
+        <CareersSection />
       </main>
       <Footer />
       <FloatingContactButton />

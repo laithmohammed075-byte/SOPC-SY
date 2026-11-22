@@ -13,7 +13,6 @@ export function Footer() {
     { href: "#home", label: t.nav.home },
     { href: "#about", label: t.nav.about },
     { href: "#services", label: t.nav.services },
-    { href: "#projects", label: t.nav.projects },
     { href: "#qhse", label: t.nav.qhse },
     { href: "#careers", label: t.nav.careers },
     { href: "#contact", label: t.nav.contact },
